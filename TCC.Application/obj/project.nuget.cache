@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wGT9YLZZmn5zfUb1zWZzzAc7zpHLaBkptmDOYB7CXOEcINlJ4DPfuJ6fx3LwgXw3okiEQC8F1pJ/XXhitgxKqA==",
+  "dgSpecHash": "aGLP4YMoW4TeFL9AcybIlwi9NmtZY2LdLM35HX39/92eSFb97eSz+hvLv8CSRAeBupdTDBJwVQJ1IllE84Uqng==",
   "success": true,
   "projectFilePath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Application\\TCC.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512"
+  ],
   "logs": []
 }

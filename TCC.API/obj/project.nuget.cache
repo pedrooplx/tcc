@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xHftzE9rJiDXLrX6ORMBWbQ1CTiYNSoF8dYc3ZIEQfYqHL2KhdpI7ghLeSW3ELZC7IKhYJgXXXHTxhakS5Aljg==",
+  "dgSpecHash": "2AY/C4kpqbi5eltJqUZCUZdxG1qSyx1nE2wp41FvjcKER/GBNzAmuEN4LcS3JcOyJix7e6uvP0z6FzYz+ilt1Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.API\\TCC.API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

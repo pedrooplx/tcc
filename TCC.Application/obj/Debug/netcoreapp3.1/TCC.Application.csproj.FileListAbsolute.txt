@@ -1,0 +1,16 @@
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.exe
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.deps.json
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.runtimeconfig.json
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.runtimeconfig.dev.json
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\TCC.Application.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.csproj.AssemblyReference.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.AssemblyInfoInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.AssemblyInfo.cs
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.csproj.CopyComplete
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Application\obj\Debug\netcoreapp3.1\TCC.Application.genruntimeconfig.cache
