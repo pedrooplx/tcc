@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6f47978e-42d4-40a1-9381-2db54c04bff3": {
+      "ProjectGuid": "6f47978e-42d4-40a1-9381-2db54c04bff3",
+      "DisplayName": "TCC.API",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
