@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xHftzE9rJiDXLrX6ORMBWbQ1CTiYNSoF8dYc3ZIEQfYqHL2KhdpI7ghLeSW3ELZC7IKhYJgXXXHTxhakS5Aljg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.API\\TCC.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
+  ],
+  "logs": []
+}
