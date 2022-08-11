@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using TCC.Domain.Entities;
@@ -9,7 +8,7 @@ namespace TCC.Infra.DataProviders.Repositories
 {
     public class DataContext : DbContext
     {
-        public DataContext([NotNullAttribute] DbContextOptions options) : base(options) { }
+        public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Organizacao> Organizacoes { get; set; }
         public DbSet<Colaborador> Colaboradores { get; set;}

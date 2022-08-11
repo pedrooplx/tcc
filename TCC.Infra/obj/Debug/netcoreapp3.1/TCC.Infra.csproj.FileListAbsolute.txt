@@ -1,0 +1,13 @@
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Infra.deps.json
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Infra.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Infra.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Domain.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Domain.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.csproj.AssemblyReference.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.AssemblyInfoInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.AssemblyInfo.cs
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.csproj.CopyComplete
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.pdb

@@ -1,0 +1,9 @@
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\bin\Debug\netcoreapp3.1\TCC.Domain.deps.json
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\bin\Debug\netcoreapp3.1\TCC.Domain.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\bin\Debug\netcoreapp3.1\TCC.Domain.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.AssemblyInfoInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.AssemblyInfo.cs
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.pdb

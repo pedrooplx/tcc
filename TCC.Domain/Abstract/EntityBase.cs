@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TCC.Domain.Abstract
 {
-    public class EntityBase : IAuditoria
+    public abstract class EntityBase : IAuditoria
     {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
         public DateTime CriandoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
     }
