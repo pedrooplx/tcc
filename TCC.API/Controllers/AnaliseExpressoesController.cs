@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using TCC.Application.Abstract;
@@ -9,15 +8,16 @@ using TCC.Application.Models;
 namespace TCC.API.Controllers
 {
     [ApiController]
-    [Route("analise-expressao")]
-    public class AnaliseExpressaoController : ControllerBase
+    [Route("analise-expressoes")]
+    public class AnaliseExpressoesController : ControllerBase
     {
-        private readonly ILogger<AnaliseExpressaoController> _logger;
+        private readonly ILogger<AnaliseExpressoesController> _logger;
         private readonly IUseCaseAsync<AnaliseRequest> _analiseUseCaseAsync;
 
-        public AnaliseExpressaoController(ILogger<AnaliseExpressaoController> logger)
+        public AnaliseExpressoesController(ILogger<AnaliseExpressoesController> logger, IUseCaseAsync<AnaliseRequest> analiseUseCaseAsync)
         {
             _logger = logger;
+            _analiseUseCaseAsync = analiseUseCaseAsync;
         }
 
         [HttpGet]

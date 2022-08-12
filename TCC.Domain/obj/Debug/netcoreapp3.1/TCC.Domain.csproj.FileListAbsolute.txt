@@ -7,3 +7,4 @@ C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.A
 C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.csproj.CoreCompileInputs.cache
 C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.dll
 C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Domain\obj\Debug\netcoreapp3.1\TCC.Domain.csproj.AssemblyReference.cache

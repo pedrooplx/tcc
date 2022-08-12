@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "idz5EzECQvrDCUlIP+CX+4/4JX44zLzX9nhL+iKJG+sXxt8Td1UC8A4FKiNJgPikMRoBYhw9mi7htURbYc1FRQ==",
+  "dgSpecHash": "4eSFM6PYvQ1EdPBDxF50YxOoNyLrbEFV6uNV+xZaaPjvbBIL2d3eaqES6Y8+5ZbCZIj5v2p+jrIuKop6M6LUCw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.API\\TCC.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pedro\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -77,6 +78,7 @@
     "C:\\Users\\pedro\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\system.linq.queryable\\4.3.0\\system.linq.queryable.4.3.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",

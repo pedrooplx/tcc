@@ -65,3 +65,4 @@ C:\Users\pedro\Documents\Git\tcc\TCC.API\obj\Debug\netcoreapp3.1\TCC.API.csproj.
 C:\Users\pedro\Documents\Git\tcc\TCC.API\obj\Debug\netcoreapp3.1\TCC.API.dll
 C:\Users\pedro\Documents\Git\tcc\TCC.API\obj\Debug\netcoreapp3.1\TCC.API.pdb
 C:\Users\pedro\Documents\Git\tcc\TCC.API\obj\Debug\netcoreapp3.1\TCC.API.genruntimeconfig.cache
+C:\Users\pedro\Documents\Git\tcc\TCC.API\bin\Debug\netcoreapp3.1\AutoMapper.dll

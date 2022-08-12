@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using TCC.Domain.Abstract;
 
-namespace TCC.Infra.DataProviders.Repositories.Extensions
+namespace TCC.Infra.DataProviders.Extensions
 {
     public static class DataContextSaveChangesExtensions
     {

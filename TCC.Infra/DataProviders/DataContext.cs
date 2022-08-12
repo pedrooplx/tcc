@@ -2,9 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using TCC.Domain.Entities;
-using TCC.Infra.DataProviders.Repositories.Extensions;
+using TCC.Infra.DataProviders.Extensions;
 
-namespace TCC.Infra.DataProviders.Repositories
+namespace TCC.Infra.DataProviders
 {
     public class DataContext : DbContext
     {
@@ -27,7 +27,7 @@ namespace TCC.Infra.DataProviders.Repositories
             return base.SaveChanges();
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             this.AddAuditory();
             return await base.SaveChangesAsync(cancellationToken);

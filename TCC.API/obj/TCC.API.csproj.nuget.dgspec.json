@@ -123,7 +123,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Domain\\TCC.Domain.csproj": {
+                "projectPath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Domain\\TCC.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -136,6 +140,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[6.0.1, )"
@@ -246,6 +254,9 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+              "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Application\\TCC.Application.csproj": {
+                "projectPath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Application\\TCC.Application.csproj"
+              },
               "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Domain\\TCC.Domain.csproj": {
                 "projectPath": "C:\\Users\\pedro\\Documents\\Git\\tcc\\TCC.Domain\\TCC.Domain.csproj"
               }
@@ -262,6 +273,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.28, )"
@@ -281,6 +296,14 @@
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "System.Linq.Expressions": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Linq.Queryable": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

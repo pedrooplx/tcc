@@ -3,15 +3,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using TCC.Application.Abstract;
 using TCC.Application.Models;
+using TCC.Application.Models.Clientes;
 using TCC.Application.UseCases;
-using TCC.Infra.Configurations;
+using TCC.Application.UseCases.Clientes;
+using TCC.Domain.Gateways;
+using TCC.Infra.DataProviders;
 using TCC.Infra.DataProviders.Repositories;
-using TCC.Infra.Extensions;
+using TCC.Infra.IOC;
 
 namespace TCC.API
 {
@@ -33,7 +34,16 @@ namespace TCC.API
 
             services.AddControllers();
 
-            services.AddSingleton<IUseCaseAsync<AnaliseRequest>, AnaliseUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AnaliseRequest>, AnaliseUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse>, ObterClientePorIdUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<InserirClienteRequest>, InserirClienteUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AtualizarClienteRequest>, AtualizarClienteUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AtualizarClienteRequest>, AtualizarClienteUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AtualizarClienteRequest>, AtualizarClienteUseCaseAsync>();
+
+            services.AddScoped<IClienteGateway, ClientesRepository>();
+            
+            AutoMapperConfiguration.ResolveAutoMapper(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

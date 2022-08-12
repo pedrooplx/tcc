@@ -11,3 +11,5 @@ C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.csp
 C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.csproj.CopyComplete
 C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.dll
 C:\Users\pedro\Documents\Git\tcc\TCC.Infra\obj\Debug\netcoreapp3.1\TCC.Infra.pdb
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Application.dll
+C:\Users\pedro\Documents\Git\tcc\TCC.Infra\bin\Debug\netcoreapp3.1\TCC.Application.pdb

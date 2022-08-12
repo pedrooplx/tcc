@@ -16,19 +16,17 @@ namespace TCC.Application.UseCases
 
         public async Task ExecuteAsync(AnaliseRequest request)
         {
-            var result = artificialInteligence(request.Imagem);
+            var result = ArtificialInteligence(request.Imagem);
 
             if (result != null)
             {
-                //db-persistence
+                
             }
-
-            Task.CompletedTask.Wait();
         }
 
-        private object artificialInteligence(string image)
+        private AIResponse ArtificialInteligence(string base64Image)
         {
-            return true;
+            return new AIResponse();
         }
     }
 }
