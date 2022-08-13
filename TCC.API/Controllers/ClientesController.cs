@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using TCC.Application.Abstract;
 using TCC.Application.Models.Clientes;
-using TCC.Application.UseCases.Clientes;
-using TCC.Domain.Gateways;
 
 namespace TCC.API.Controllers
 {
@@ -14,26 +11,26 @@ namespace TCC.API.Controllers
     [Route("analise-expressoes/clientes")]
     public class ClientesController : ControllerBase
     {
-        private readonly ILogger<ClientesController> _logger;
         private readonly IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse> _obterClientePorIdUseCaseAsync;
         private readonly IUseCaseAsync<InserirClienteRequest> _inserirClienteUseCaseAsync;
         private readonly IUseCaseAsync<AtualizarClienteRequest> _atualizarClienteUseCaseAsync;
+        private readonly IUseCaseAsync<RemoverClienteRequest> _removerClientesUseCaseAsync;
 
         public ClientesController(
-            ILogger<ClientesController> logger, 
-            IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse> obterClientePorIdUseCaseAsync, 
-            IUseCaseAsync<InserirClienteRequest> inserirClienteUseCaseAsync, 
-            IUseCaseAsync<AtualizarClienteRequest> atualizarClienteUseCaseAsync
-        )
+            IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse> obterClientePorIdUseCaseAsync,
+            IUseCaseAsync<InserirClienteRequest> inserirClienteUseCaseAsync,
+            IUseCaseAsync<AtualizarClienteRequest> atualizarClienteUseCaseAsync, 
+            IUseCaseAsync<RemoverClienteRequest> removerClientesUseCaseAsync
+            )
         {
-            _logger = logger;
             _obterClientePorIdUseCaseAsync = obterClientePorIdUseCaseAsync;
             _inserirClienteUseCaseAsync = inserirClienteUseCaseAsync;
             _atualizarClienteUseCaseAsync = atualizarClienteUseCaseAsync;
+            _removerClientesUseCaseAsync = removerClientesUseCaseAsync;
         }
 
         [HttpGet("{Id:Guid}")]
-        public async Task<IActionResult> ObterClientePorId([Required] Guid id)
+        public async Task<IActionResult> ObterClientePorId([Required][FromRoute] Guid id)
         {
             return Ok(await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id)));
         }
@@ -45,7 +42,7 @@ namespace TCC.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> InserirCliente([Required] InserirClienteRequest request)
+        public async Task<IActionResult> InserirCliente([Required][FromBody] InserirClienteRequest request)
         {
             await _inserirClienteUseCaseAsync.ExecuteAsync(request);
 
@@ -53,17 +50,19 @@ namespace TCC.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> AtualizarCliente([Required] AtualizarClienteRequest request)
+        public async Task<IActionResult> AtualizarCliente([Required][FromBody] AtualizarClienteRequest request)
         {
             await _atualizarClienteUseCaseAsync.ExecuteAsync(request);
 
             return Ok(request);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> RemoverCliente()
+        [HttpDelete("{Id:Guid}")]
+        public async Task<IActionResult> RemoverCliente([Required][FromRoute] Guid id)
         {
-            return Ok("Success");
+            await _removerClientesUseCaseAsync.ExecuteAsync(new RemoverClienteRequest(id));
+
+            return Ok();
         }
     }
 }

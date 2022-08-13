@@ -23,9 +23,11 @@ namespace TCC.Application.UseCases.Clientes
 
         public async Task ExecuteAsync(AtualizarClienteRequest request)
         {
-            var cliente = _mapper.Map<Cliente>(request);
+            var clienteAtual = await _clienteGateway.GetByIdAsync(request.Id);
+            
+            var clienteAtualizado = _mapper.Map(request, clienteAtual);
 
-            await _clienteGateway.UpdateAsync(cliente);
+            await _clienteGateway.UpdateAsync(clienteAtualizado);
         }
     }
 }
