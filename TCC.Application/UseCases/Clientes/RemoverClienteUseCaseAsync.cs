@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using TCC.Application.Abstract;
+using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
 using TCC.Domain.Gateways;
 

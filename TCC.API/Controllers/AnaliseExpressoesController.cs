@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using TCC.Application.Abstract;
+using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models;
 
 namespace TCC.API.Controllers

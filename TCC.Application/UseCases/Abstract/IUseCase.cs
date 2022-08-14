@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TCC.Application.Abstract
+namespace TCC.Application.UseCases.Abstract
 {
     public interface IUseCaseAsync <in TRequest>
     {

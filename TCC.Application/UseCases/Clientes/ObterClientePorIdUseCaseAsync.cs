@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using TCC.Application.Abstract;
+using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
 using TCC.Domain.Entities;
 using TCC.Domain.Gateways;
@@ -26,6 +26,8 @@ namespace TCC.Application.UseCases.Clientes
 
         public async Task<ObterClientePorIdResponse> ExecuteAsync(ObterClientePorIdRequest request)
         {
+            _logger.LogInformation($"Iniciando busca de cliente id {request.Id}");
+
             Cliente response = await _clientesGateway.GetByIdAsync(request.Id);
 
             return _mapper.Map<ObterClientePorIdResponse>(response);

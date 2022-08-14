@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using TCC.Application.Abstract;
+using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
 
 namespace TCC.API.Controllers
@@ -12,18 +12,21 @@ namespace TCC.API.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse> _obterClientePorIdUseCaseAsync;
+        private readonly IUseCaseAsync<object, ObterClientesResponse> _obterClientesUseCaseAsync;
         private readonly IUseCaseAsync<InserirClienteRequest> _inserirClienteUseCaseAsync;
         private readonly IUseCaseAsync<AtualizarClienteRequest> _atualizarClienteUseCaseAsync;
         private readonly IUseCaseAsync<RemoverClienteRequest> _removerClientesUseCaseAsync;
 
         public ClientesController(
             IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse> obterClientePorIdUseCaseAsync,
+            IUseCaseAsync<object, ObterClientesResponse> obterClientesUseCaseAsync,
             IUseCaseAsync<InserirClienteRequest> inserirClienteUseCaseAsync,
             IUseCaseAsync<AtualizarClienteRequest> atualizarClienteUseCaseAsync, 
             IUseCaseAsync<RemoverClienteRequest> removerClientesUseCaseAsync
             )
         {
             _obterClientePorIdUseCaseAsync = obterClientePorIdUseCaseAsync;
+            _obterClientesUseCaseAsync = obterClientesUseCaseAsync;
             _inserirClienteUseCaseAsync = inserirClienteUseCaseAsync;
             _atualizarClienteUseCaseAsync = atualizarClienteUseCaseAsync;
             _removerClientesUseCaseAsync = removerClientesUseCaseAsync;
@@ -38,7 +41,7 @@ namespace TCC.API.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterClientes()
         {
-            return Ok("Success");
+            return Ok(await _obterClientesUseCaseAsync.ExecuteAsync(default));
         }
 
         [HttpPost]

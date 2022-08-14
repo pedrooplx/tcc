@@ -9,15 +9,19 @@ namespace TCC.Application.Mappers
     {
         public AutoMapperUseCase()
         {
-            CreateMap<Cliente, ObterClientePorIdResponse>().ReverseMap();
-            CreateMap<InserirClienteRequest, Cliente>().ReverseMap();
-
-            //CreateMap<AtualizarClienteRequest, Cliente>()
-            //    .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome));
+            #region Request
+            CreateMap<Cliente, ObterClientePorIdResponse>();
 
             CreateMap<AtualizarClienteRequest, Cliente>()
-                                .ForMember(dest => dest.Nome, source => source.MapFrom(source => source.Nome)); //Specific Mapping
+                .ForMember(dest => dest.Nome, source => source.MapFrom(source => source.Nome));
+            #endregion
 
+            #region Response
+            CreateMap<InserirClienteRequest, Cliente>();
+
+            CreateMap<IEnumerable<Cliente>, ObterClientesResponse>()
+                .ForMember(dest => dest.Clientes, source => source.MapFrom(source => source));
+            #endregion
         }
     }
 }

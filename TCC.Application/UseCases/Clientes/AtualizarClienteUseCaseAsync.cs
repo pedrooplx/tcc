@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using TCC.Application.Abstract;
+using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
 using TCC.Domain.Entities;
 using TCC.Domain.Gateways;
@@ -23,6 +23,8 @@ namespace TCC.Application.UseCases.Clientes
 
         public async Task ExecuteAsync(AtualizarClienteRequest request)
         {
+            _logger.LogInformation($"Iniciando atualização de cliente id {request.Id}");
+
             var clienteAtual = await _clienteGateway.GetByIdAsync(request.Id);
             
             var clienteAtualizado = _mapper.Map(request, clienteAtual);
