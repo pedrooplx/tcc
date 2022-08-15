@@ -6,9 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TCC.Application.Models;
 using TCC.Application.Models.Clientes;
+using TCC.Application.Models.Organizacao;
 using TCC.Application.UseCases;
 using TCC.Application.UseCases.Abstract;
 using TCC.Application.UseCases.Clientes;
+using TCC.Application.UseCases.Organizacao;
 using TCC.Domain.Gateways;
 using TCC.Infra.DataProviders;
 using TCC.Infra.DataProviders.Repositories;
@@ -37,11 +39,18 @@ namespace TCC.API
 
             //Use Cases
             services.AddScoped<IUseCaseAsync<AnaliseRequest>, AnaliseUseCaseAsync>();
+
             services.AddScoped<IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse>, ObterClientePorIdUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<object, ObterClientesResponse>, ObterClientesUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<InserirClienteRequest>, InserirClienteUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<AtualizarClienteRequest>, AtualizarClienteUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<RemoverClienteRequest>, RemoverClienteUseCaseAsync>();
+
+            services.AddScoped<IUseCaseAsync<ObterOrganizacaoPorIdRequest, ObterOrganizacaoPorIdResponse>, ObterOrganizacaoPorIdUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<object, ObterOrganizacoesResponse>, ObterOrganizacoesUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<InserirOrganizacaoRequest>, InserirOrganizacaoUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AtualizarOrganizacaoRequest>, AtualizarOrganizacaoUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<RemoverOrganizacaoRequest>, RemoverOrganizacaoUseCaseAsync>();
 
             //Repository
             services.AddScoped<IAtendimentoGateway, AtendimentoRepository>();

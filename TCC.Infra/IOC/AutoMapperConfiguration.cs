@@ -10,7 +10,8 @@ namespace TCC.Infra.IOC
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new AutoMapperUseCase());
+                cfg.AddProfile(new ClienteAutoMapper());
+                cfg.AddProfile(new OrganizacaoAutoMapper());
             });
             IMapper mapper = config.CreateMapper();
 

@@ -5,7 +5,7 @@ namespace TCC.Domain.Entities
 {
     public class Organizacao : EntityBase
     {
-        public string Nome { get; set; }
+        public string RazaoSocial { get; set; }
         public int Cnpj { get; set; }
         public double Patrimonio { get; set; }
         public string Area { get; set; }
