@@ -7,6 +7,8 @@ namespace TCC.Domain.Entities
     {
         public string Nome { get; set; }
         public int Cnpj { get; set; }
+        public double Patrimonio { get; set; }
+        public string Area { get; set; }
         public List<Colaborador> Colaboradores { get; set; }
     }
 }
