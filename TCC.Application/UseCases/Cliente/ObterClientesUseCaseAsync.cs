@@ -5,7 +5,7 @@ using TCC.Application.Models.Clientes;
 using TCC.Application.UseCases.Abstract;
 using TCC.Domain.Gateways;
 
-namespace TCC.Application.UseCases.Clientes
+namespace TCC.Application.UseCases.Cliente
 {
     public class ObterClientesUseCaseAsync : IUseCaseAsync<object, ObterClientesResponse>
     {

@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
-using TCC.Domain.Entities;
+using TCC.Application.UseCases.Abstract;
 using TCC.Domain.Gateways;
 
-namespace TCC.Application.UseCases.Clientes
+namespace TCC.Application.UseCases.Cliente
 {
     public class InserirClienteUseCaseAsync : IUseCaseAsync<InserirClienteRequest>
     {
@@ -25,7 +24,7 @@ namespace TCC.Application.UseCases.Clientes
         {
             _logger.LogInformation($"Iniciando criação de cliente {request.Cpf}");
 
-            var cliente = _mapper.Map<Cliente>(request);
+            var cliente = _mapper.Map<Domain.Entities.Cliente>(request);
 
             await _clienteGateway.InsertAsync(cliente);
         }

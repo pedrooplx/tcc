@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
-using TCC.Domain.Entities;
+using TCC.Application.UseCases.Abstract;
 using TCC.Domain.Gateways;
 
-namespace TCC.Application.UseCases.Clientes
+namespace TCC.Application.UseCases.Cliente
 {
     public class ObterClientePorIdUseCaseAsync : IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse>
     {
@@ -28,7 +27,7 @@ namespace TCC.Application.UseCases.Clientes
         {
             _logger.LogInformation($"Iniciando busca de cliente id {request.Id}");
 
-            Cliente response = await _clientesGateway.GetByIdAsync(request.Id);
+            var response = await _clientesGateway.GetByIdAsync(request.Id);
 
             return _mapper.Map<ObterClientePorIdResponse>(response);
         }

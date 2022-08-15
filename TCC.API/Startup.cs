@@ -9,7 +9,7 @@ using TCC.Application.Models.Clientes;
 using TCC.Application.Models.Organizacao;
 using TCC.Application.UseCases;
 using TCC.Application.UseCases.Abstract;
-using TCC.Application.UseCases.Clientes;
+using TCC.Application.UseCases.Cliente;
 using TCC.Application.UseCases.Organizacao;
 using TCC.Domain.Gateways;
 using TCC.Infra.DataProviders;
@@ -28,7 +28,7 @@ namespace TCC.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //DB
+            //Database
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseMySql(configuration.GetSection("Database:MySqlConnectionString").Value);
