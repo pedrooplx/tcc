@@ -26,6 +26,7 @@ namespace TCC.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //DB
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseMySql(configuration.GetSection("Database:MySqlConnectionString").Value);
@@ -34,16 +35,22 @@ namespace TCC.API
 
             services.AddControllers();
 
+            //Use Cases
             services.AddScoped<IUseCaseAsync<AnaliseRequest>, AnaliseUseCaseAsync>();
-
             services.AddScoped<IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse>, ObterClientePorIdUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<object, ObterClientesResponse>, ObterClientesUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<InserirClienteRequest>, InserirClienteUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<AtualizarClienteRequest>, AtualizarClienteUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<RemoverClienteRequest>, RemoverClienteUseCaseAsync>();
 
-            services.AddScoped<IClienteGateway, ClientesRepository>();
+            //Repository
+            services.AddScoped<IAtendimentoGateway, AtendimentoRepository>();
+            services.AddScoped<IClassificacaoGateway, ClassificacaoRepository>();
+            services.AddScoped<IClienteGateway, ClienteRepository>();
+            services.AddScoped<IColaboradorGateway, ColaboradorRepository>();
+            services.AddScoped<IOrganizacaoGateway, OrganizacaoRepository>();
             
+            //Services
             AutoMapperConfiguration.ResolveAutoMapper(services);
         }
 

@@ -5,9 +5,9 @@ using TCC.Infra.DataProviders.Repositories.Abstract;
 
 namespace TCC.Infra.DataProviders.Repositories
 {
-    public class ClientesRepository : BaseRepository<Cliente>, IClienteGateway
+    public class ColaboradorRepository : BaseRepository<Colaborador>, IColaboradorGateway
     {
-        public ClientesRepository(DataContext context, ILogger<BaseRepository<Cliente>> logger) : base(context, logger)
+        public ColaboradorRepository(DataContext context, ILogger<BaseRepository<Colaborador>> logger) : base(context, logger)
         {
         }
     }
