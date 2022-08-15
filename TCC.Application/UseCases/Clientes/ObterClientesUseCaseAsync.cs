@@ -9,11 +9,11 @@ namespace TCC.Application.UseCases.Clientes
 {
     public class ObterClientesUseCaseAsync : IUseCaseAsync<object, ObterClientesResponse>
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<ObterClientesUseCaseAsync> _logger;
         private readonly IMapper _mapper;
         private readonly IClienteGateway _clientesGateway;
 
-        public ObterClientesUseCaseAsync(ILogger logger, IMapper mapper, IClienteGateway clientesGateway)
+        public ObterClientesUseCaseAsync(ILogger<ObterClientesUseCaseAsync> logger, IMapper mapper, IClienteGateway clientesGateway)
         {
             _logger = logger;
             _mapper = mapper;

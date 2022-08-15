@@ -7,7 +7,8 @@ namespace TCC.Application.Models.Clientes
     {
         [Required]
         public Guid Id { get; set; }
-        [Required]
         public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Endereco { get; set; }
     }
 }
