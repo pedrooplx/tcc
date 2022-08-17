@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using TCC.Application.UseCases.Abstract;
 using TCC.Application.Models.Clientes;
+using TCC.API.Extensions.RestResultRepresentation.Models;
+using TCC.API.Extensions;
 
 namespace TCC.API.Controllers
 {
@@ -35,13 +37,17 @@ namespace TCC.API.Controllers
         [HttpGet("{Id:Guid}")]
         public async Task<IActionResult> ObterClientePorId([Required][FromRoute] Guid id)
         {
-            return Ok(await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id)));
+            var cliente = await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id));
+
+            return new RestResult<ObterClientePorIdResponse>(cliente, StatusCodeExtensions.Extrair(cliente));
         }
 
         [HttpGet]
         public async Task<IActionResult> ObterClientes()
         {
-            return Ok(await _obterClientesUseCaseAsync.ExecuteAsync(default));
+            var clientes = await _obterClientesUseCaseAsync.ExecuteAsync(default);
+
+            return new RestResult<ObterClientesResponse>(clientes, StatusCodeExtensions.Extrair(clientes));
         }
 
         [HttpPost]
