@@ -7,9 +7,9 @@ namespace TCC.Application.Models.Organizacao
     public class ObterOrganizacaoPorIdRequest : BaseRequest
     {
         [Required]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
-        public ObterOrganizacaoPorIdRequest(Guid id)
+        public ObterOrganizacaoPorIdRequest(long id)
         {
             Id = id;
         }

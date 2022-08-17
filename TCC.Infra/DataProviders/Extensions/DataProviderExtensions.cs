@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using TCC.Domain.Abstract;
+using TCC.Domain.Entities.Abstract;
 
 namespace TCC.Infra.DataProviders.Extensions
 {
     public static class DataProviderExtensions
     {
-        public static IQueryable<TEntity> WhereIdEqual<TEntity, Guid>(
+        public static IQueryable<TEntity> WhereIdEqual<TEntity, Long>(
             this IQueryable<TEntity> source,
-            Expression<Func<TEntity, Guid>> keyExpression,
-            Guid keyValue
+            Expression<Func<TEntity, Long>> keyExpression,
+            Long keyValue
         ) where TEntity : EntityBase
         {
             var memberExpression = (MemberExpression)keyExpression.Body;

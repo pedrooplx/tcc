@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TCC.Domain.Abstract;
+using TCC.Domain.Entities.Abstract;
 using TCC.Domain.Gateways.Abstract;
 using TCC.Infra.DataProviders.Extensions;
 
@@ -25,7 +25,7 @@ namespace TCC.Infra.DataProviders.Repositories.Abstract
             _dbSet = context.Set<TEntity>();
         }
 
-        public async Task<TEntity> GetByIdAsync(Guid id)
+        public async Task<TEntity> GetByIdAsync(long id)
         {
             _logger.LogInformation($"Método GetByIdAsync invocado. Id:{id}");
 
@@ -55,7 +55,7 @@ namespace TCC.Infra.DataProviders.Repositories.Abstract
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(long id)
         {
             _logger.LogInformation($"Método DeleteAsync invocado. Id:{id}");
 

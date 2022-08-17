@@ -1,5 +1,6 @@
 ﻿using System;
-using TCC.Domain.Abstract;
+using TCC.Domain.Entities.Abstract;
+using TCC.Domain.Entities.Abstract;
 
 namespace TCC.Domain.Entities
 {

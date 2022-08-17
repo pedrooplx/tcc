@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 
 namespace TCC.API
@@ -15,7 +16,7 @@ namespace TCC.API
 
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
-            logger.LogInformation("Inicializando serviço 'TCC.API'");
+            logger.LogInformation($"Inicializando serviço 'TCC.API' em {DateTime.Now}");
 
             return host.RunAsync();
         }

@@ -7,6 +7,6 @@ namespace TCC.Application.Models.Atendimento
     public class ObterAtendimentoPorIdRequest : BaseRequest
     {
         [Required]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
     }
 }

@@ -1,13 +1,17 @@
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TCC.Application.Models;
+using Newtonsoft.Json.Linq;
+using System.Linq;
+using System.Xml;
 using TCC.Application.Models.Clientes;
 using TCC.Application.Models.Organizacao;
-using TCC.Application.UseCases;
 using TCC.Application.UseCases.Abstract;
 using TCC.Application.UseCases.Cliente;
 using TCC.Application.UseCases.Organizacao;
@@ -34,6 +38,13 @@ namespace TCC.API
                 options.UseMySql(configuration.GetSection("Database:MySqlConnectionString").Value);
                 options.EnableSensitiveDataLogging();
             });
+
+            //HC
+            services.AddHealthChecks()
+                .AddMySql(configuration.GetSection("Database:MySqlConnectionString").Value)
+                .AddDbContextCheck<DataContext>();
+
+            //
 
             services.AddControllers();
 
@@ -72,6 +83,30 @@ namespace TCC.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
+
+            //Ativa o HealthChecks
+            app.UseHealthChecks("/health", new HealthCheckOptions()
+            {
+                ResponseWriter = (httpContext, result) => {
+                    httpContext.Response.ContentType = "application/json";
+
+                    var json = new JObject(
+                        new JProperty("status", result.Status.ToString()),
+                        new JProperty("results", new JObject(result.Entries.Select(pair =>
+                            new JProperty(pair.Key, new JObject(
+                                new JProperty("status", pair.Value.Status.ToString()),
+                                new JProperty("description", pair.Value.Description),
+                                new JProperty("data", new JObject(pair.Value.Data.Select(
+                                    p => new JProperty(p.Key, p.Value))))))))));
+                    return httpContext.Response.WriteAsync(json.ToString((Newtonsoft.Json.Formatting)Formatting.Indented));
+                }
+            });
+
+            //
 
             app.UseHttpsRedirection();
 

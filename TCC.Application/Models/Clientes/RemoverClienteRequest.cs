@@ -7,9 +7,9 @@ namespace TCC.Application.Models.Clientes
     public class RemoverClienteRequest : BaseRequest
     {
         [Required]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
-        public RemoverClienteRequest(Guid id)
+        public RemoverClienteRequest(long id)
         {
             Id = id;
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using TCC.Domain.Abstract;
+using TCC.Domain.Entities.Abstract;
 
 namespace TCC.Infra.DataProviders.Extensions
 {

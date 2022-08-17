@@ -1,4 +1,4 @@
-﻿using TCC.Domain.Abstract;
+﻿using TCC.Domain.Entities.Abstract;
 using TCC.Domain.Enums;
 
 namespace TCC.Domain.Entities

@@ -7,9 +7,9 @@ namespace TCC.Application.Models.Clientes
     public class ObterClientePorIdRequest : BaseRequest
     {
         [Required]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
-        public ObterClientePorIdRequest(Guid id)
+        public ObterClientePorIdRequest(long id)
         {
             Id = id;
         }

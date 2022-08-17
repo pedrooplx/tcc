@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using TCC.Application.UseCases.Abstract;
-using TCC.Application.Models.Clientes;
-using TCC.API.Extensions.RestResultRepresentation.Models;
 using TCC.API.Extensions;
+using TCC.API.Extensions.RestResultRepresentation.Models;
+using TCC.Application.Models.Clientes;
+using TCC.Application.UseCases.Abstract;
 
 namespace TCC.API.Controllers
 {
@@ -35,7 +34,7 @@ namespace TCC.API.Controllers
         }
 
         [HttpGet("{Id:Guid}")]
-        public async Task<IActionResult> ObterClientePorId([Required][FromRoute] Guid id)
+        public async Task<IActionResult> ObterClientePorId([Required][FromRoute] long id)
         {
             var cliente = await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id));
 
@@ -67,7 +66,7 @@ namespace TCC.API.Controllers
         }
 
         [HttpDelete("{Id:Guid}")]
-        public async Task<IActionResult> RemoverCliente([Required][FromRoute] Guid id)
+        public async Task<IActionResult> RemoverCliente([Required][FromRoute] long id)
         {
             await _removerClientesUseCaseAsync.ExecuteAsync(new RemoverClienteRequest(id));
 
