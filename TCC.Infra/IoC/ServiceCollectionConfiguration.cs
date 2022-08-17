@@ -8,10 +8,11 @@ namespace TCC.Infra.IoC
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
             DbContextConfiguration.RegisterDbContext(services, configuration);
-            AutoMapperConfiguration.ResolveAutoMapper(services);
             HealthCheckConfiguration.RegisterHealthCheck(services, configuration);
-            UseCaseConfiguration.Register(services);
+            SwaggerConfiguration.RegisterSwagger(services);
             RepositoryConfiguration.Register(services);
+            UseCaseConfiguration.Register(services);
+            AutoMapperConfiguration.ResolveAutoMapper(services);
         }
     }
 }

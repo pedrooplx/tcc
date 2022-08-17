@@ -21,7 +21,7 @@ namespace TCC.API
         {
             services.AddControllers();
 
-            ServiceCollectionConfiguration.RegisterServices(services, configuration);            
+            ServiceCollectionConfiguration.RegisterServices(services, configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +41,7 @@ namespace TCC.API
             }
 
             HealthCheckConfiguration.ConfigureHealthCheck(app);
+            SwaggerConfiguration.ConfigureSwagger(app);
 
             app.UseHttpsRedirection();
 
