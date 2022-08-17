@@ -2,11 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using TCC.Application.Mappers;
 
-namespace TCC.Infra.IOC
+namespace TCC.Infra.IoC
 {
     public static class AutoMapperConfiguration
     {
-        public static IServiceCollection ResolveAutoMapper(this IServiceCollection services)
+        public static void ResolveAutoMapper(this IServiceCollection services)
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -16,8 +16,6 @@ namespace TCC.Infra.IOC
             IMapper mapper = config.CreateMapper();
 
             services.AddSingleton(mapper);
-
-            return services;
         }
     }
 }

@@ -14,8 +14,4 @@
     <ProjectReference Include="..\TCC.Domain\TCC.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Colaborador\" />
-  </ItemGroup>
-
 </Project>

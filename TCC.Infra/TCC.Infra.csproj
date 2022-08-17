@@ -1,30 +1,34 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="DataProviders\EntityConfigurations\" />
-    <Folder Include="Factories\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="DataProviders\EntityConfigurations\" />
+		<Folder Include="Factories\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.28" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.28" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.28" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
-    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.MySql" Version="3.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.28" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+		<PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+		<PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TCC.Application\TCC.Application.csproj" />
-    <ProjectReference Include="..\TCC.Domain\TCC.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\TCC.Application\TCC.Application.csproj" />
+		<ProjectReference Include="..\TCC.Domain\TCC.Domain.csproj" />
+	</ItemGroup>
 
 </Project>
