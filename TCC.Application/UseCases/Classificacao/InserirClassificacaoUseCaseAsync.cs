@@ -8,9 +8,9 @@ namespace TCC.Application.UseCases.Classificacao
 {
     public class InserirClassificacaoUseCaseAsync : IUseCaseAsync<InserirClassificacaoRequest>
     {
-        private readonly ILogger<AnaliseUseCaseAsync> _logger;
+        private readonly ILogger<InserirClassificacaoUseCaseAsync> _logger;
 
-        public InserirClassificacaoUseCaseAsync(ILogger<AnaliseUseCaseAsync> logger)
+        public InserirClassificacaoUseCaseAsync(ILogger<InserirClassificacaoUseCaseAsync> logger)
         {
             _logger = logger;
         }

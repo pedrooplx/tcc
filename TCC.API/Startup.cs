@@ -38,8 +38,6 @@ namespace TCC.API
             services.AddControllers();
 
             //Use Cases
-            services.AddScoped<IUseCaseAsync<AnaliseRequest>, AnaliseUseCaseAsync>();
-
             services.AddScoped<IUseCaseAsync<ObterClientePorIdRequest, ObterClientePorIdResponse>, ObterClientePorIdUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<object, ObterClientesResponse>, ObterClientesUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<InserirClienteRequest>, InserirClienteUseCaseAsync>();

@@ -71,7 +71,12 @@ namespace TCC.API.Controllers
         {
             await _removerClientesUseCaseAsync.ExecuteAsync(new RemoverClienteRequest(id));
 
-            return Ok();
+            var result = await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id));
+
+            if (result == null)
+                return NotFound();
+            
+            return Ok(result);
         }
     }
 }

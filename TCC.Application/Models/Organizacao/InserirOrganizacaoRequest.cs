@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TCC.Application.Models.Abstract;
 
 namespace TCC.Application.Models.Organizacao
 {
-    public class InserirOrganizacaoRequest
+    public class InserirOrganizacaoRequest : BaseRequest
     {
         [Required]
         public string RazaoSocial { get; set; }
