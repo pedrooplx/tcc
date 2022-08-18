@@ -24,9 +24,8 @@ namespace TCC.Application.UseCases.Organizacao
         {
             _logger.LogInformation($"Iniciando remoção de organizacao id{request.Id}");
 
-            var organizacao = _mapper.Map<Domain.Entities.Organizacao>(request);
-
-            await _organizacaoGateway.DeleteAsync(request.Id);
+            if ((await _organizacaoGateway.GetByIdAsync(request.Id)) != null)
+                await _organizacaoGateway.DeleteAsync(request.Id);
         }
     }
 }

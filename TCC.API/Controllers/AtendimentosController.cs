@@ -27,7 +27,7 @@ namespace TCC.API.Controllers
             _finalizarAtendimentoPorIdUseCaseAsync = finalizarAtendimentoPorIdUseCaseAsync;
         }
 
-        [HttpGet("{Id:Guid}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterAtendimentoPorId([Required][FromRoute] long id)
         {
             var cliente = await _obterAtendimentoPorIdUseCaseAsync.ExecuteAsync(new ObterAtendimentoPorIdRequest(id));

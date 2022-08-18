@@ -33,7 +33,7 @@ namespace TCC.API.Controllers
             _removerClientesUseCaseAsync = removerClientesUseCaseAsync;
         }
 
-        [HttpGet("{Id:Guid}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterClientePorId([Required][FromRoute] long id)
         {
             var cliente = await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id));
@@ -65,7 +65,7 @@ namespace TCC.API.Controllers
             return Ok(request);
         }
 
-        [HttpDelete("{Id:Guid}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoverCliente([Required][FromRoute] long id)
         {
             await _removerClientesUseCaseAsync.ExecuteAsync(new RemoverClienteRequest(id));

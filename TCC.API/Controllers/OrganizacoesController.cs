@@ -33,7 +33,7 @@ namespace TCC.API.Controllers
             _removerOrganizacoesUseCaseAsync = removerOrganizacoesUseCaseAsync;
         }
 
-        [HttpGet("{Id:Guid}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterOrganizacaoPorId([Required][FromRoute] long id)
         {
             var organizacao = await _obterOrganizacaoPorIdUseCaseAsync.ExecuteAsync(new ObterOrganizacaoPorIdRequest(id));
@@ -65,7 +65,7 @@ namespace TCC.API.Controllers
             return Ok(request);
         }
 
-        [HttpDelete("{Id:Guid}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoverOrganizacao([Required][FromRoute] long id)
         {
             await _removerOrganizacoesUseCaseAsync.ExecuteAsync(new RemoverOrganizacaoRequest(id));
