@@ -72,10 +72,7 @@ namespace TCC.API.Controllers
 
             var result = await _obterClientePorIdUseCaseAsync.ExecuteAsync(new ObterClientePorIdRequest(id));
 
-            if (result == null)
-                return NotFound();
-            
-            return Ok(result);
+            return new RestResult<ObterClientePorIdResponse>(result, StatusCodeExtensions.Extrair(result));
         }
     }
 }

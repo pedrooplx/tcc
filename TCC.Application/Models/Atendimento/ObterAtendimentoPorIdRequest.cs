@@ -8,5 +8,10 @@ namespace TCC.Application.Models.Atendimento
     {
         [Required]
         public long Id { get; set; }
+
+        public ObterAtendimentoPorIdRequest(long id)
+        {
+            Id = id;
+        }
     }
 }
