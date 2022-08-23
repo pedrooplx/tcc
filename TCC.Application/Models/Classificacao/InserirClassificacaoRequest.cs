@@ -11,9 +11,6 @@ namespace TCC.Application.Models.Classificacao
         [Required]
         public int FuncionalColaborador { get; set; }
         [Required]
-        public int CpfCliente { get; set; }
-        [Required]
         public string Imagem { get; set; }
-        public DateTime Horario { get; set; } = DateTime.Now;
     }
 }

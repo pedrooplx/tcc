@@ -17,45 +17,6 @@ namespace TCC.Infra.Migrations
                 .HasAnnotation("ProductVersion", "3.1.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("TCC.Domain.Entities.Atendimento", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("AlteradoEm")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("AlteradoPor")
-                        .HasColumnType("char(36)");
-
-                    b.Property<long?>("ClienteId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("ColaboradorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid>("CriadoPor")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("CriandoEm")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("FimAtendimento")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("InicioAtendimento")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("ColaboradorId");
-
-                    b.ToTable("Atendimentos");
-                });
-
             modelBuilder.Entity("TCC.Domain.Entities.Classificacao", b =>
                 {
                     b.Property<long>("Id")
@@ -67,9 +28,6 @@ namespace TCC.Infra.Migrations
 
                     b.Property<Guid>("AlteradoPor")
                         .HasColumnType("char(36)");
-
-                    b.Property<long?>("AtendimentoId")
-                        .HasColumnType("bigint");
 
                     b.Property<Guid>("CriadoPor")
                         .HasColumnType("char(36)");
@@ -88,44 +46,7 @@ namespace TCC.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AtendimentoId");
-
                     b.ToTable("Classificacoes");
-                });
-
-            modelBuilder.Entity("TCC.Domain.Entities.Cliente", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("AlteradoEm")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("AlteradoPor")
-                        .HasColumnType("char(36)");
-
-                    b.Property<long>("Cpf")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid>("CriadoPor")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("CriandoEm")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Endereco")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("TCC.Domain.Entities.Colaborador", b =>
@@ -198,24 +119,6 @@ namespace TCC.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organizacoes");
-                });
-
-            modelBuilder.Entity("TCC.Domain.Entities.Atendimento", b =>
-                {
-                    b.HasOne("TCC.Domain.Entities.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("TCC.Domain.Entities.Colaborador", "Colaborador")
-                        .WithMany()
-                        .HasForeignKey("ColaboradorId");
-                });
-
-            modelBuilder.Entity("TCC.Domain.Entities.Classificacao", b =>
-                {
-                    b.HasOne("TCC.Domain.Entities.Atendimento", "Atendimento")
-                        .WithMany("Classificacao")
-                        .HasForeignKey("AtendimentoId");
                 });
 
             modelBuilder.Entity("TCC.Domain.Entities.Colaborador", b =>

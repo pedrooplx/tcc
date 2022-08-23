@@ -10,11 +10,15 @@ namespace TCC.Application.Mappers
         public OrganizacaoAutoMapper()
         {
             CreateMap<InserirOrganizacaoRequest, Organizacao>();
+
             CreateMap<AtualizarOrganizacaoRequest, Organizacao>()
+                .ForMember(dest => dest.Id, source => source.MapFrom(source => source.Id))
                 .ForMember(dest => dest.RazaoSocial, source => source.MapFrom(source => source.RazaoSocial))
                 .ForMember(dest => dest.Patrimonio, source => source.MapFrom(source => source.Patrimonio))
                 .ForMember(dest => dest.Area, source => source.MapFrom(source => source.Area));
+
             CreateMap<Organizacao, ObterOrganizacaoPorIdResponse>();
+
             CreateMap<IEnumerable<Organizacao>, ObterOrganizacoesResponse>()
                 .ForMember(dest => dest.Organizacoes, source => source.MapFrom(source => source));
         }

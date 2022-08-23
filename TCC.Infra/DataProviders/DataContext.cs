@@ -12,9 +12,7 @@ namespace TCC.Infra.DataProviders
 
         public DbSet<Organizacao> Organizacoes { get; set; }
         public DbSet<Colaborador> Colaboradores { get; set;}
-        public DbSet<Cliente> Clientes { get; set;}
         public DbSet<Classificacao> Classificacoes { get; set;}
-        public DbSet<Atendimento> Atendimentos { get; set;}
     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

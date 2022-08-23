@@ -5,7 +5,7 @@ namespace TCC.Application.Models.Abstract
 {
     public class BaseRequest
     {
-        [Required]
-        public Guid IdSistemaOrigem { get; set; }
+        //[Required]
+        //public Guid IdSistemaOrigem { get; set; }
     }
 }

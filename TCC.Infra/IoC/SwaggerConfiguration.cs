@@ -20,7 +20,7 @@ namespace TCC.Infra.IoC
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
                 c.RoutePrefix = string.Empty;
             });
         }

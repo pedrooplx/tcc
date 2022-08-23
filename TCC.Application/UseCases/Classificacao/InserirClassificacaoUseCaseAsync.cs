@@ -17,7 +17,7 @@ namespace TCC.Application.UseCases.Classificacao
 
         public async Task ExecuteAsync(InserirClassificacaoRequest request)
         {
-            var result = ArtificialInteligence(request.Imagem);
+            var result = await ArtificialInteligence(request.Imagem);
 
             if (result != null)
             {
@@ -25,7 +25,7 @@ namespace TCC.Application.UseCases.Classificacao
             }
         }
 
-        private AIResponse ArtificialInteligence(string base64Image)
+        private async Task<AIResponse> ArtificialInteligence(string base64Image)
         {
             return new AIResponse();
         }

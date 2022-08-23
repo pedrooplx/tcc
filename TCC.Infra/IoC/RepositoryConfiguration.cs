@@ -11,9 +11,7 @@ namespace TCC.Infra.IoC
     {
         public static void Register(this IServiceCollection services)
         {
-            services.AddScoped<IAtendimentoGateway, AtendimentoRepository>();
             services.AddScoped<IClassificacaoGateway, ClassificacaoRepository>();
-            services.AddScoped<IClienteGateway, ClienteRepository>();
             services.AddScoped<IColaboradorGateway, ColaboradorRepository>();
             services.AddScoped<IOrganizacaoGateway, OrganizacaoRepository>();
         }

@@ -6,5 +6,6 @@ namespace TCC.Application.Models.Colaborador
 {
     public class ObterColaboradoresResponse
     {
+        public IEnumerable<ObterColaboradorPorIdResponse> Colaboradores { get; set; }
     }
 }
