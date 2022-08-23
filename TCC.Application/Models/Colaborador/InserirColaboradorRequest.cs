@@ -8,6 +8,6 @@ namespace TCC.Application.Models.Colaborador
         public int Funcional { get; set; }
         public string Nome { get; set; }
         public string Setor { get; set; }
-        public long IdOrganizacao { get; set; }
+        public long OrganizacaoId { get; set; }
     }
 }

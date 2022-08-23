@@ -25,8 +25,8 @@ namespace TCC.Infra.IoC
 
         private static void RegisterColaboradorUseCases(this IServiceCollection services)
         {
-            services.AddScoped<IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorPorIdResponse>, ObterColaboradorPorIdUseCaseAsync>();
-            services.AddScoped<IUseCaseAsync<object, ObterColaboradoresResponse>, ObterColaboradoresUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorComEmpresaPorIdResponse>, ObterColaboradorComEmpresaPorIdUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<object, ObterColaboradoresComEmpresaResponse>, ObterColaboradoresComEmpresaUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<InserirColaboradorRequest>, InserirColaboradorUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<AtualizarColaboradorRequest>, AtualizarColaboradorUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<RemoverColaboradorRequest>, RemoverColaboradorUseCaseAsync>();

@@ -9,8 +9,8 @@ using TCC.Infra.DataProviders;
 namespace TCC.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220819025543_Initial")]
-    partial class Initial
+    [Migration("20220823022320_Alteracao-Modelo-Classificacao")]
+    partial class AlteracaoModeloClassificacao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,12 @@ namespace TCC.Infra.Migrations
                     b.Property<Guid>("AlteradoPor")
                         .HasColumnType("char(36)");
 
+                    b.Property<long>("ClassificacaoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ColaboradorId")
+                        .HasColumnType("bigint");
+
                     b.Property<Guid>("CriadoPor")
                         .HasColumnType("char(36)");
 
@@ -47,6 +53,8 @@ namespace TCC.Infra.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ColaboradorId");
 
                     b.ToTable("Classificacoes");
                 });
@@ -75,11 +83,11 @@ namespace TCC.Infra.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<long?>("OrganizacaoId")
+                    b.Property<long>("OrganizacaoId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("Setor")
-                        .HasColumnType("int");
+                    b.Property<string>("Setor")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -123,11 +131,20 @@ namespace TCC.Infra.Migrations
                     b.ToTable("Organizacoes");
                 });
 
+            modelBuilder.Entity("TCC.Domain.Entities.Classificacao", b =>
+                {
+                    b.HasOne("TCC.Domain.Entities.Colaborador", "Colaborador")
+                        .WithMany("Classificacoes")
+                        .HasForeignKey("ColaboradorId");
+                });
+
             modelBuilder.Entity("TCC.Domain.Entities.Colaborador", b =>
                 {
                     b.HasOne("TCC.Domain.Entities.Organizacao", "Organizacao")
                         .WithMany("Colaboradores")
-                        .HasForeignKey("OrganizacaoId");
+                        .HasForeignKey("OrganizacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

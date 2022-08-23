@@ -57,10 +57,10 @@ namespace TCC.Infra.Migrations
                     CriandoEm = table.Column<DateTime>(nullable: false),
                     AlteradoPor = table.Column<Guid>(nullable: false),
                     AlteradoEm = table.Column<DateTime>(nullable: false),
+                    OrganizacaoId = table.Column<long>(nullable: false),
                     Funcional = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
-                    Setor = table.Column<int>(nullable: false),
-                    OrganizacaoId = table.Column<long>(nullable: true)
+                    Setor = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,7 +70,7 @@ namespace TCC.Infra.Migrations
                         column: x => x.OrganizacaoId,
                         principalTable: "Organizacoes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

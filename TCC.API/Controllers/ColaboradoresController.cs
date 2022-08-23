@@ -12,15 +12,15 @@ namespace TCC.API.Controllers
     [Route("analise-expressoes/colaboradores")]
     public class ColaboradoresController : ControllerBase
     {
-        private readonly IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorPorIdResponse> _obterColaboradorPorIdUseCaseAsync;
-        private readonly IUseCaseAsync<object, ObterColaboradoresResponse> _obterColaboradoresUseCaseAsync;
+        private readonly IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorComEmpresaPorIdResponse> _obterColaboradorPorIdUseCaseAsync;
+        private readonly IUseCaseAsync<object, ObterColaboradoresComEmpresaResponse> _obterColaboradoresUseCaseAsync;
         private readonly IUseCaseAsync<InserirColaboradorRequest> _inserirColaboradorUseCaseAsync;
         private readonly IUseCaseAsync<AtualizarColaboradorRequest> _atualizarColaboradorUseCaseAsync;
         private readonly IUseCaseAsync<RemoverColaboradorRequest> _removerColaboradorUseCaseAsync;
 
         public ColaboradoresController(
-            IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorPorIdResponse> obterColaboradorPorIdUseCaseAsync, 
-            IUseCaseAsync<object, ObterColaboradoresResponse> obterColaboradoresUseCaseAsync, 
+            IUseCaseAsync<ObterColaboradorPorIdRequest, ObterColaboradorComEmpresaPorIdResponse> obterColaboradorPorIdUseCaseAsync, 
+            IUseCaseAsync<object, ObterColaboradoresComEmpresaResponse> obterColaboradoresUseCaseAsync, 
             IUseCaseAsync<InserirColaboradorRequest> inserirColaboradorUseCaseAsync, 
             IUseCaseAsync<AtualizarColaboradorRequest> atualizarColaboradorUseCaseAsync, 
             IUseCaseAsync<RemoverColaboradorRequest> removerColaboradorUseCaseAsync
@@ -38,7 +38,7 @@ namespace TCC.API.Controllers
         {
             var Colaborador = await _obterColaboradorPorIdUseCaseAsync.ExecuteAsync(new ObterColaboradorPorIdRequest(id));
 
-            return new RestResult<ObterColaboradorPorIdResponse>(Colaborador, StatusCodeExtensions.Extrair(Colaborador));
+            return new RestResult<ObterColaboradorComEmpresaPorIdResponse>(Colaborador, StatusCodeExtensions.Extrair(Colaborador));
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace TCC.API.Controllers
         {
             var colaboradores = await _obterColaboradoresUseCaseAsync.ExecuteAsync(default);
 
-            return new RestResult<ObterColaboradoresResponse>(colaboradores, StatusCodeExtensions.Extrair(colaboradores));
+            return new RestResult<ObterColaboradoresComEmpresaResponse>(colaboradores, StatusCodeExtensions.Extrair(colaboradores));
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace TCC.API.Controllers
 
             var result = await _obterColaboradorPorIdUseCaseAsync.ExecuteAsync(new ObterColaboradorPorIdRequest(id));
 
-            return new RestResult<ObterColaboradorPorIdResponse>(result, StatusCodeExtensions.Extrair(result));
+            return new RestResult<ObterColaboradorComEmpresaPorIdResponse>(result, StatusCodeExtensions.Extrair(result));
         }
     }
 }

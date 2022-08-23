@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCC.Infra.DataProviders;
 
 namespace TCC.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220823014231_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,6 @@ namespace TCC.Infra.Migrations
                     b.Property<Guid>("AlteradoPor")
                         .HasColumnType("char(36)");
 
-                    b.Property<long>("ColaboradorId")
-                        .HasColumnType("bigint");
-
                     b.Property<Guid>("CriadoPor")
                         .HasColumnType("char(36)");
 
@@ -48,8 +47,6 @@ namespace TCC.Infra.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ColaboradorId");
 
                     b.ToTable("Classificacoes");
                 });
@@ -124,15 +121,6 @@ namespace TCC.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organizacoes");
-                });
-
-            modelBuilder.Entity("TCC.Domain.Entities.Classificacao", b =>
-                {
-                    b.HasOne("TCC.Domain.Entities.Colaborador", "Colaborador")
-                        .WithMany("Classificacoes")
-                        .HasForeignKey("ColaboradorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TCC.Domain.Entities.Colaborador", b =>
