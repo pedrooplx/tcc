@@ -15,8 +15,9 @@ namespace TCC.API
             var host = CreateHostBuilder(args).Build();
 
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            var hostEnvironment = host.Services.GetService<IHostEnvironment>();
 
-            logger.LogInformation($"Inicializando serviço 'TCC.API' em {DateTime.Now}");
+            logger.LogInformation($"Inicializando serviço 'TCC.API' em {DateTime.Now}. Environment: {hostEnvironment.EnvironmentName}");
 
             return host.RunAsync();
         }
