@@ -13,6 +13,9 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="AspNetCore.HealthChecks.MySql" Version="3.1.1" />
+		<PackageReference Include="KissLog" Version="5.1.2" />
+		<PackageReference Include="KissLog.AspNetCore" Version="5.1.2" />
+		<PackageReference Include="KissLog.CloudListeners" Version="5.1.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.28" />

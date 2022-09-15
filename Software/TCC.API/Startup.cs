@@ -27,6 +27,8 @@ namespace TCC.API
                     JsonSerializerExtension.SnakeCaseNamingPolicySerializer(options);
                 });
 
+            services.AddHttpContextAccessor();
+
             ServiceCollectionConfiguration.RegisterServices(services, configuration);
         }
 
@@ -48,6 +50,7 @@ namespace TCC.API
 
             HealthCheckConfiguration.ConfigureHealthCheck(app);
             SwaggerConfiguration.ConfigureSwagger(app);
+            KissLoggerConfiguration.ConfigureKissLog(app, configuration);
 
             app.UseHttpsRedirection();
 

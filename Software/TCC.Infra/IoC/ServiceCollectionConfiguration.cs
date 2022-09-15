@@ -12,6 +12,7 @@ namespace TCC.Infra.IoC
             SwaggerConfiguration.RegisterSwagger(services);
             RepositoryConfiguration.Register(services);
             UseCaseConfiguration.Register(services);
+            KissLoggerConfiguration.RegisterKissLog(services);
             AutoMapperConfiguration.ResolveAutoMapper(services);
         }
     }
