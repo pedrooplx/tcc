@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Threading;
 using System.Threading.Tasks;
 using TCC.Domain.Entities;
+using TCC.Domain.Enums;
 using TCC.Infra.DataProviders.Extensions;
 
 namespace TCC.Infra.DataProviders
@@ -17,6 +19,11 @@ namespace TCC.Infra.DataProviders
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+
+            modelBuilder
+                .Entity<Classificacao>()
+                .Property(d => d.Emocao)
+                .HasConversion(new EnumToStringConverter<Emocoes>());
         }
 
         public override int SaveChanges()
