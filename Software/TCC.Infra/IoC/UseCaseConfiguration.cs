@@ -21,6 +21,7 @@ namespace TCC.Infra.IoC
         private static void RegisterClassificacaoUseCases(this IServiceCollection services)
         {
             services.AddScoped<IUseCaseAsync<InserirClassificacaoRequest>, InserirClassificacaoUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse>, ObterClassificacaoPorColaboradorUseCaseAsync>();
         }
 
         private static void RegisterColaboradorUseCases(this IServiceCollection services)

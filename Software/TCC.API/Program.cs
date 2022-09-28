@@ -38,7 +38,11 @@ namespace TCC.API
 
         private static void ConfigureWebHost(IWebHostBuilder webHostBuilder)
         {
-            webHostBuilder.UseKestrel();
+            webHostBuilder.UseKestrel(option =>
+            {
+                option.Limits.KeepAliveTimeout = TimeSpan.FromMilliseconds(30000);
+                option.Limits.RequestHeadersTimeout = TimeSpan.FromMilliseconds(30000);
+            });
             webHostBuilder.UseStartup<Startup>();
         }
     }
