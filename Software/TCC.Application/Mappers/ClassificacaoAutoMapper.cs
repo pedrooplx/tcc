@@ -20,6 +20,8 @@ namespace TCC.Application.Mappers
 
             CreateMap<IEnumerable<Classificacao>, ObterClassificacoesPorColaboradorResponse>()
                 .ForMember(dest => dest.Classificacoes, source => source.MapFrom(source => source));
+
+            CreateMap<AnaliseClassificacaoRequest, ObterClassificacaoResponse>();
         }
     }
 }

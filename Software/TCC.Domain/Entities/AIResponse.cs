@@ -1,11 +1,14 @@
-﻿using TCC.Domain.Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using TCC.Domain.Enums;
 
-namespace TCC.Application.Models
+namespace TCC.Domain.Entities
 {
     public class AIResponse
     {
         public Emocoes Emotion { get; set; }
-        public double EmotionProbability {get; set; }
+        public double EmotionProbability { get; set; }
 
         public AIResponse() { }
         public AIResponse(Emocoes emotion, double emotionProbability)

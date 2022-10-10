@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using System;
 using System.Threading.Tasks;
-using TCC.Application.Models;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
 using TCC.Domain.Gateways;
+using TCC.Infra.DataProviders.Services.ExpressionIA;
 
 namespace TCC.Application.UseCases.Classificacao
 {
@@ -30,7 +29,7 @@ namespace TCC.Application.UseCases.Classificacao
 
             if (colaborador != null)
             {
-                var recognitionResult = await ArtificialInteligence(request.Imagem);
+                var recognitionResult = await ExpressionIAService.AnalisarFace(request.Imagem);
 
                 if (recognitionResult != null)
                 {
@@ -45,16 +44,6 @@ namespace TCC.Application.UseCases.Classificacao
             }
 
             return;
-        }
-
-        private async Task<AIResponse> ArtificialInteligence(string base64Image)
-        {
-            Random rnd = new Random();
-
-            int emotion = rnd.Next(0, 6);
-            int probability = rnd.Next(50, 100);
-
-            return new AIResponse(emotion, probability);
         }
     }
 }

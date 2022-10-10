@@ -1,14 +1,3 @@
-/*
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/esp32-cam-post-image-photo-server/
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*/
-
 #include <Arduino.h>
 #include <WiFi.h>
 #include <base64.h>
@@ -19,12 +8,7 @@
 const char* ssid = "PEDRO DIA 2G";
 const char* password = "pedro123";
 
-String serverName = "127.0.0.1";   // REPLACE WITH YOUR Raspberry Pi IP ADDRESS
-//String serverName = "example.com";   // OR REPLACE WITH YOUR DOMAIN NAME
-
-String serverPath = "/analise-expressoes/classificacoes";     // The default serverPath should be upload.php
-
-const int serverPort = 5001;
+const String serverPath = "https://container-analise-expressao.herokuapp.com/";
 
 WiFiClient client;
 
@@ -47,7 +31,7 @@ WiFiClient client;
 #define HREF_GPIO_NUM     23
 #define PCLK_GPIO_NUM     22
 
-const int timerInterval = 30000;    // time between each HTTP POST image
+const int timerInterval = 10000;    // time between each HTTP POST image
 unsigned long previousMillis = 0;   // last time image was sent
 
 void setup() {
@@ -91,26 +75,22 @@ void setup() {
 
   // init with high specs to pre-allocate larger buffers
   if(psramFound()){
-    config.frame_size = FRAMESIZE_SVGA;
-    config.jpeg_quality = 10;  //0-63 lower number means higher quality
-    config.fb_count = 2;
+    Serial.println("Parametros encontrados");
+    config.frame_size = FRAMESIZE_UXGA;
+    config.jpeg_quality = 15;  //0-63 lower number means higher quality
+    config.fb_count = 5;
   } else {
-    config.frame_size = FRAMESIZE_CIF;
-    config.jpeg_quality = 12;  //0-63 lower number means higher quality
-    config.fb_count = 1;
+    Serial.println("Parametros não encontrados... Reiniciando sistema...");
+    ESP.restart();
   }
   
   // camera init
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
-    Serial.printf("Camera init failed with error 0x%x", err);
-    delay(1000);
-    ESP.restart();
+    Serial.printf("Falha ao iniciar camera... Erro 0x%x", err);
   } else {
-     Serial.println("Camera successfully initiated");
+     Serial.println("Camera iniciada com sucesso");
   }
-
-  sendPhoto(); 
 }
 
 void loop() {
@@ -121,29 +101,29 @@ void loop() {
   }
 }
 
-String sendPhoto() {
+String sendPhoto() {  
   String getAll;
   String getBody;
 
   camera_fb_t * fb = NULL;
-  fb = esp_camera_fb_get();
+  fb = esp_camera_fb_get(); //Método que tira a foto
   if(!fb) {
     Serial.println("Camera capture failed");
-    delay(1000);
     ESP.restart();
   } else {
     Serial.println("Camera capture successfully");
+
+    //Conversão de imagem (jpg) para base64
+    uint8_t *fbBuf = fb->buf;
+    String encodedImg = base64::encode(fbBuf, fb->len);
+    const char* converted = encodedImg.c_str();
+    
+    //Conversão de imagem (jpg) para base64 - FIM
+    
+    Serial.println("Logando img em b64");
+    Serial.println(converted);
+    Serial.println("Logando img em b64 fim");
   }
-
-  uint8_t *fbBuf = fb->buf;
-  String encodedImg = base64::encode(fbBuf, fb->len);
-  const char* converted = encodedImg.c_str();
   
-  Serial.println("Logando img em b64");
-  Serial.println(converted);
-  Serial.println("Logando img em b64 fim");
-
-  Serial.println("Connecting to server: " + serverName);
-  Serial.println("Fim");
   return getBody;
 }

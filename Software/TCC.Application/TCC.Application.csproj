@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TCC.Domain\TCC.Domain.csproj" />
+    <ProjectReference Include="..\TCC.Infra\TCC.Infra.csproj" />
   </ItemGroup>
 
 </Project>

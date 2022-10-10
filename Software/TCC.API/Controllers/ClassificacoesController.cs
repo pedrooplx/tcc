@@ -14,6 +14,7 @@ namespace TCC.API.Controllers
     {
         private readonly IUseCaseAsync<InserirClassificacaoRequest> _inserirClassificacaoUseCaseAsync;
         private readonly IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse> _obterClassificacaoPorColaboradorUseCaseAsync;
+        private readonly IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse> _analiseClassificacaoUseCaseAsync;
 
         public ClassificacoesController(
             IUseCaseAsync<InserirClassificacaoRequest> inserirClassificacaoUseCaseAsync,
@@ -24,7 +25,7 @@ namespace TCC.API.Controllers
             _obterClassificacaoPorColaboradorUseCaseAsync = obterClassificacaoPorColaboradorUseCaseAsync;
         }
 
-        [HttpGet("colaboradores/{id}")]
+        [HttpGet("colaborador/{id}")]
         public async Task<IActionResult> ObterClassificacaoPorColaborador([Required][FromRoute] int id)
         {
             var request = new ObterClassificacoesPorColaboradorRequest(id);
@@ -40,6 +41,14 @@ namespace TCC.API.Controllers
             await _inserirClassificacaoUseCaseAsync.ExecuteAsync(request);
 
             return Ok(request);
+        }
+
+        [HttpPost("analise")]
+        public async Task<IActionResult> AnaliseClassificacao([Required][FromBody] AnaliseClassificacaoRequest request)
+        {
+            var classificacoes = await _analiseClassificacaoUseCaseAsync.ExecuteAsync(request);
+
+            return new RestResult<ObterClassificacaoResponse>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
         }
     }
 }
