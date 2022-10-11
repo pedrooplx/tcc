@@ -34,10 +34,10 @@ namespace TCC.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                serviceScope.ServiceProvider.GetRequiredService<DataContext>().Database.Migrate();
-            }
+            //using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    serviceScope.ServiceProvider.GetRequiredService<DataContext>().Database.Migrate();
+            //}
 
             if (env.IsDevelopment())
             {
