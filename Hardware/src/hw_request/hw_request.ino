@@ -79,7 +79,7 @@ void setup() {
   while ((WiFiMulti.run() != WL_CONNECTED)) {
     Serial.print(".");
   }
-  Serial.println(" connected");
+  Serial.println("connected");
 
   setClock();  
 }
@@ -89,7 +89,6 @@ void loop() {
   if(client) {
     client -> setCACert(rootCACertificate);
 
-    {
       // Add a scoping block for HTTPClient https to make sure it is destroyed before WiFiClientSecure *client is 
       HTTPClient https;
   
@@ -119,7 +118,6 @@ void loop() {
       }
 
       // End extra scoping block
-    }
   
     delete client;
   } else {

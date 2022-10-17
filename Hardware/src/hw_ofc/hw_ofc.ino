@@ -37,7 +37,7 @@ const char* rootCACertificate = \
 
 const char* ssid = "PEDRO DIA 2G";
 const char* password = "pedro123";
-const String serverPath = "https://container-analise-expressao.herokuapp.com/";
+const String serverPath = "https://container-analise-expressao.herokuapp.com/analise-expressoes/classificacoes";
 const int funcional = 987335338;
 
 WiFiClientSecure *client = new WiFiClientSecure;
@@ -157,7 +157,13 @@ void sendPhoto() {
     String encodedImg = base64::encode(fbBuf, fb->len);
     const char* convertedImage = encodedImg.c_str();
 
+    Serial.println("base64:");
+    Serial.println(convertedImage);
+
     String json = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";  
+
+    Serial.println("json:");
+    Serial.println(json);
     
     if(client) {
       HTTPClient https;
