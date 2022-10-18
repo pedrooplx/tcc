@@ -115,9 +115,9 @@ void setup() {
   // init with high specs to pre-allocate larger buffers
   if(psramFound()){
     Serial.println("Parametros encontrados");
-    config.frame_size = FRAMESIZE_UXGA;
-    config.jpeg_quality = 15;  //0-63 lower number means higher quality
-    config.fb_count = 3;
+    config.frame_size = FRAMESIZE_CIF;
+    config.jpeg_quality = 8;  //0-63 lower number means higher quality
+    config.fb_count = 2;
   } else {
     Serial.println("Parametros não encontrados... Reiniciando sistema...");
     ESP.restart();
@@ -161,9 +161,11 @@ void sendPhoto() {
     Serial.println(convertedImage);
 
     String json = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";  
+    String json2 = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";  
 
     Serial.println("json:");
     Serial.println(json);
+    Serial.println(json2);
     
     if(client) {
       HTTPClient https;
