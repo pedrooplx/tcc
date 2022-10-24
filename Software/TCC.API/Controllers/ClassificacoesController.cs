@@ -18,11 +18,12 @@ namespace TCC.API.Controllers
 
         public ClassificacoesController(
             IUseCaseAsync<InserirClassificacaoRequest> inserirClassificacaoUseCaseAsync,
-            IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse> obterClassificacaoPorColaboradorUseCaseAsync
-        )
+            IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse> obterClassificacaoPorColaboradorUseCaseAsync,
+            IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse> analiseClassificacaoUseCaseAsync)
         {
             _inserirClassificacaoUseCaseAsync = inserirClassificacaoUseCaseAsync;
             _obterClassificacaoPorColaboradorUseCaseAsync = obterClassificacaoPorColaboradorUseCaseAsync;
+            _analiseClassificacaoUseCaseAsync = analiseClassificacaoUseCaseAsync;
         }
 
         [HttpGet("colaborador/{id}")]

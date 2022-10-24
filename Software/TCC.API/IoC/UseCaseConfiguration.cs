@@ -22,6 +22,7 @@ namespace TCC.Infra.IoC
         {
             services.AddScoped<IUseCaseAsync<InserirClassificacaoRequest>, InserirClassificacaoUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse>, ObterClassificacaoPorColaboradorUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse>, AnaliseClassificacaoUseCaseAsync>();
         }
 
         private static void RegisterColaboradorUseCases(this IServiceCollection services)
