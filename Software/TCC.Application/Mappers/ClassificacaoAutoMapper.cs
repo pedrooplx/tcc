@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using TCC.Application.Models.Classificacao;
 using TCC.Domain.Entities;
+using TCC.Domain.Enums;
+using TCC.Domain.Extensions;
 
 namespace TCC.Application.Mappers
 {
@@ -25,7 +27,7 @@ namespace TCC.Application.Mappers
             CreateMap<AnaliseClassificacaoRequest, ObterClassificacaoResponse>();
 
             CreateMap<Tuple<string, double>, ObterClassificacaoResponse>()
-                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Item1))
+                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => EnumExtension.GetDescription((Emocoes)Enum.Parse(typeof(Emocoes), source.Item1))))
                 .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Item2));
         }
     }

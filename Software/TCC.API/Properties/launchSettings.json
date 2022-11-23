@@ -15,7 +15,7 @@
       "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Local",
-        "IA_SERVICE_ENDPONINT": "https://e4af-2804-431-c7c1-fd5b-ed41-2411-e1a5-7bf6.sa.ngrok.io/"
+        "IA_SERVICE_ENDPONINT": "https://3016-2804-431-c7c0-125-953b-4639-4750-6b1b.sa.ngrok.io/"
       },
       "applicationUrl": "http://localhost:5000"
     },
