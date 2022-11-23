@@ -1,49 +1,64 @@
 ﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
+using TCC.Domain.Enums;
 using TCC.Domain.Gateways;
-using TCC.Infra.DataProviders.Services.ExpressionIA;
+using TCC.Domain.Gateways.Services;
 
 namespace TCC.Application.UseCases.Classificacao
 {
-    public class InserirClassificacaoUseCaseAsync : IUseCaseAsync<InserirClassificacaoRequest>
+    public class InserirClassificacaoUseCaseAsync : IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>>
     {
-        private readonly IClassificacaoGateway _classificacaoGateway;
         private readonly IMapper _mapper;
+        private readonly IClassificacaoGateway _classificacaoGateway;
         private readonly IColaboradorGateway _colaboradorGateway;
+        private readonly IConsultarIAGateway _consultarIAGateway;
+
         public InserirClassificacaoUseCaseAsync(
-            IClassificacaoGateway classificacaoGateway, 
-            IMapper mapper, 
-            IColaboradorGateway colaboradorGateway
-        )
+            IMapper mapper,
+            IClassificacaoGateway classificacaoGateway,
+            IColaboradorGateway colaboradorGateway,
+            IConsultarIAGateway consultarIAGateway)
         {
             _classificacaoGateway = classificacaoGateway;
             _mapper = mapper;
             _colaboradorGateway = colaboradorGateway;
+            _consultarIAGateway = consultarIAGateway;
         }
 
-        public async Task ExecuteAsync(InserirClassificacaoRequest request)
+        public async Task<List<ObterClassificacaoResponse>> ExecuteAsync(InserirClassificacaoRequest request)
         {
             var colaborador = await _colaboradorGateway.ObterColaboradorPorFuncional(request.FuncionalColaborador);
 
             if (colaborador != null)
             {
-                var recognitionResult = await ExpressionIAService.AnalisarFace(request.Imagem);
+                var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
 
                 if (recognitionResult != null)
                 {
-                    request.Emocao = recognitionResult.Emotion;
-                    request.Probabilidade = recognitionResult.EmotionProbability;
-                    request.ColaboradorId = colaborador.Id;
+                    List<ObterClassificacaoResponse> retorno = new List<ObterClassificacaoResponse>();
 
-                    var classificacao = _mapper.Map<Domain.Entities.Classificacao>(request);
+                    foreach (var recognitions in recognitionResult)
+                    {
+                        request.Emocao = (Emocoes)Enum.Parse(typeof(Emocoes), recognitions.Item1);
+                        request.Probabilidade = recognitions.Item2;
+                        request.ColaboradorId = colaborador.Id;
 
-                    await _classificacaoGateway.InsertAsync(classificacao);
+                        var classificacao = _mapper.Map<Domain.Entities.Classificacao>(request);
+
+                        await _classificacaoGateway.InsertAsync(classificacao);
+
+                        retorno.Add(_mapper.Map<ObterClassificacaoResponse>(recognitions));
+                    }
+
+                    return retorno;
                 }
             }
 
-            return;
+            return null;
         }
     }
 }

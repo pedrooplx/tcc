@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using TCC.API.Extensions;
@@ -12,14 +13,14 @@ namespace TCC.API.Controllers
     [Route("analise-expressoes/classificacoes")]
     public class ClassificacoesController : Controller
     {
-        private readonly IUseCaseAsync<InserirClassificacaoRequest> _inserirClassificacaoUseCaseAsync;
+        private readonly IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>> _inserirClassificacaoUseCaseAsync;
         private readonly IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse> _obterClassificacaoPorColaboradorUseCaseAsync;
-        private readonly IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse> _analiseClassificacaoUseCaseAsync;
+        private readonly IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>> _analiseClassificacaoUseCaseAsync;
 
         public ClassificacoesController(
-            IUseCaseAsync<InserirClassificacaoRequest> inserirClassificacaoUseCaseAsync,
+            IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>> inserirClassificacaoUseCaseAsync,
             IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse> obterClassificacaoPorColaboradorUseCaseAsync,
-            IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse> analiseClassificacaoUseCaseAsync)
+            IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>> analiseClassificacaoUseCaseAsync)
         {
             _inserirClassificacaoUseCaseAsync = inserirClassificacaoUseCaseAsync;
             _obterClassificacaoPorColaboradorUseCaseAsync = obterClassificacaoPorColaboradorUseCaseAsync;
@@ -39,9 +40,9 @@ namespace TCC.API.Controllers
         [HttpPost]
         public async Task<IActionResult> InserirClassificacao([Required][FromBody] InserirClassificacaoRequest request)
         {
-            await _inserirClassificacaoUseCaseAsync.ExecuteAsync(request);
+            var classificacoes = await _inserirClassificacaoUseCaseAsync.ExecuteAsync(request);
 
-            return Ok(request);
+            return new RestResult<List<ObterClassificacaoResponse>>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
         }
 
         [HttpPost("analise")]
@@ -49,7 +50,7 @@ namespace TCC.API.Controllers
         {
             var classificacoes = await _analiseClassificacaoUseCaseAsync.ExecuteAsync(request);
 
-            return new RestResult<ObterClassificacaoResponse>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
+            return new RestResult<List<ObterClassificacaoResponse>>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.Models.Colaborador;
 using TCC.Application.Models.Organizacao;
@@ -20,9 +21,9 @@ namespace TCC.Infra.IoC
 
         private static void RegisterClassificacaoUseCases(this IServiceCollection services)
         {
-            services.AddScoped<IUseCaseAsync<InserirClassificacaoRequest>, InserirClassificacaoUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>>, InserirClassificacaoUseCaseAsync>();
             services.AddScoped<IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse>, ObterClassificacaoPorColaboradorUseCaseAsync>();
-            services.AddScoped<IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse>, AnaliseClassificacaoUseCaseAsync>();
+            services.AddScoped<IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>>, AnaliseClassificacaoUseCaseAsync>();
         }
 
         private static void RegisterColaboradorUseCases(this IServiceCollection services)

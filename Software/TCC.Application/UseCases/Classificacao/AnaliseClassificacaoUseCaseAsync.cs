@@ -1,35 +1,39 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
-using TCC.Infra.DataProviders.Services.ExpressionIA;
+using TCC.Domain.Gateways.Services;
 
 namespace TCC.Application.UseCases.Classificacao
 {
-    public class AnaliseClassificacaoUseCaseAsync : IUseCaseAsync<AnaliseClassificacaoRequest, ObterClassificacaoResponse>
+    public class AnaliseClassificacaoUseCaseAsync : IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>>
     {
         private readonly IMapper _mapper;
+        private readonly IConsultarIAGateway _consultarIAGateway;
 
         public AnaliseClassificacaoUseCaseAsync(
-            IMapper mapper
-        )
+            IMapper mapper,
+            IConsultarIAGateway consultarIAGateway)
         {
             _mapper = mapper;
+            _consultarIAGateway = consultarIAGateway;
         }
 
-        public async Task<ObterClassificacaoResponse> ExecuteAsync(AnaliseClassificacaoRequest request)
+        public async Task<List<ObterClassificacaoResponse>> ExecuteAsync(AnaliseClassificacaoRequest request)
         {
-
             if (request.Imagem != null)
             {
-                var recognitionResult = await ExpressionIAService.AnalisarFace(request.Imagem);
+                var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
 
                 if (recognitionResult != null)
                 {
-                    request.Emocao = recognitionResult.Emotion;
-                    request.Probabilidade = recognitionResult.EmotionProbability;
+                    List<ObterClassificacaoResponse> retorno = new List<ObterClassificacaoResponse>();
 
-                    return _mapper.Map<ObterClassificacaoResponse>(request);
+                    foreach (var recognitions in recognitionResult)
+                        retorno.Add(_mapper.Map<ObterClassificacaoResponse>(recognitions));
+
+                    return retorno;
                 }
             }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TCC.API.IoC;
 
 namespace TCC.Infra.IoC
 {
@@ -11,6 +12,7 @@ namespace TCC.Infra.IoC
             HealthCheckConfiguration.RegisterHealthCheck(services, configuration);
             SwaggerConfiguration.RegisterSwagger(services);
             RepositoryConfiguration.Register(services);
+            ServicesConfiguration.Register(services);
             UseCaseConfiguration.Register(services);
             KissLoggerConfiguration.RegisterKissLog(services);
             AutoMapperConfiguration.ResolveAutoMapper(services);

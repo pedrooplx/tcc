@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using TCC.Application.Models.Classificacao;
 using TCC.Domain.Entities;
@@ -22,6 +23,10 @@ namespace TCC.Application.Mappers
                 .ForMember(dest => dest.Classificacoes, source => source.MapFrom(source => source));
 
             CreateMap<AnaliseClassificacaoRequest, ObterClassificacaoResponse>();
+
+            CreateMap<Tuple<string, double>, ObterClassificacaoResponse>()
+                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Item1))
+                .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Item2));
         }
     }
 }
