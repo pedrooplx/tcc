@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -13,10 +14,17 @@ namespace TCC.Infra.DataProviders.Services
     {
         private static readonly HttpClient httpClient = new HttpClient();
 
+        private readonly IConfiguration _configuration;
+
+        public ConsultarIAService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public async Task<List<Tuple<string, double>>> ObterAnalise(string image)
         {
             var httpContent = new StringContent("{\"Imagem\":\"" + image + "\"}", Encoding.UTF8, "application/json");
-            var httpResponse = await httpClient.PostAsync($"{Environment.GetEnvironmentVariable("IA_SERVICE_ENDPONINT")}IaEngine/Analyze", httpContent);
+            var httpResponse = await httpClient.PostAsync($"{_configuration.GetSection("IA_MS_ENDPOINT").Value}IaEngine/Analyze", httpContent);
 
             return JsonConvert.DeserializeObject<List<Tuple<string, double>>>(httpResponse.Content.ReadAsStringAsync().Result);
         }

@@ -15,6 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCC.Infra", "TCC.Infra\TCC.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{1CCF1ABC-C425-4B9B-897E-86FFEDBDF849}"
 	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
 		Dockerfile.Heroku = Dockerfile.Heroku
 		Dockerfile.Local = Dockerfile.Local
 		Dockerfile.Staging = Dockerfile.Staging

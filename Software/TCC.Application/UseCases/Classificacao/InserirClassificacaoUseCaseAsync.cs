@@ -35,7 +35,8 @@ namespace TCC.Application.UseCases.Classificacao
 
             if (colaborador != null)
             {
-                var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
+                //var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
+                var recognitionResult = (List<Tuple<string, double>>) null;
 
                 if (recognitionResult != null)
                 {
@@ -55,6 +56,15 @@ namespace TCC.Application.UseCases.Classificacao
                     }
 
                     return retorno;
+                }
+                else
+                {
+                    await _classificacaoGateway.InsertAsync(new Domain.Entities.Classificacao() 
+                    { 
+                        Emocao = Emocoes.undefined,
+                        Probabilidade = 0,
+                        ColaboradorId = colaborador.Id
+                    });
                 }
             }
 

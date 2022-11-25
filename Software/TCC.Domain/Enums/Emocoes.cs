@@ -17,6 +17,8 @@ namespace TCC.Domain.Enums
         [Description("Surpreso(a)")]
         surprised,
         [Description("Neutro")]
-        neutral
+        neutral,
+        [Description("Indefinido")]
+        undefined
     }
 }
