@@ -35,8 +35,7 @@ namespace TCC.Application.UseCases.Classificacao
 
             if (colaborador != null)
             {
-                //var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
-                var recognitionResult = (List<Tuple<string, double>>) null;
+                var recognitionResult = await _consultarIAGateway.ObterAnalise(request.Imagem);
 
                 if (recognitionResult != null)
                 {

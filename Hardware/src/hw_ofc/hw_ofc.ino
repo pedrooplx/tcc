@@ -37,7 +37,7 @@ const char* rootCACertificate = \
 
 const char* ssid = "PEDRO DIA 2G";
 const char* password = "pedro123";
-const String serverPath = "https://container-analise-expressao.herokuapp.com/analise-expressoes/classificacoes";
+const String serverPath = "https://api-analise-expressao.herokuapp.com/analise-expressoes/classificacoes";
 const int funcional = 987335338;
 
 WiFiClientSecure *client = new WiFiClientSecure;
@@ -69,7 +69,8 @@ unsigned long previousMillis = 0;   // last time image was sent
 void setup() {
   //Configuração WIFI
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); 
-  Serial.begin(115200);
+  //Serial.begin(115200);
+  Serial.begin(9600);
 
   WiFi.mode(WIFI_STA);
   WiFiMulti.addAP(ssid, password);
@@ -116,8 +117,8 @@ void setup() {
   if(psramFound()){
     Serial.println("Parametros encontrados");
     config.frame_size = FRAMESIZE_CIF;
-    config.jpeg_quality = 8;  //0-63 lower number means higher quality
-    config.fb_count = 2;
+    config.jpeg_quality = 12;  //0-63 lower number means higher quality
+    config.fb_count = 5;
   } else {
     Serial.println("Parametros não encontrados... Reiniciando sistema...");
     ESP.restart();
@@ -157,15 +158,7 @@ void sendPhoto() {
     String encodedImg = base64::encode(fbBuf, fb->len);
     const char* convertedImage = encodedImg.c_str();
 
-    Serial.println("base64:");
-    Serial.println(convertedImage);
-
-    String json = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";  
-    String json2 = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";  
-
-    Serial.println("json:");
-    Serial.println(json);
-    Serial.println(json2);
+    String json = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";   
     
     if(client) {
       HTTPClient https;
