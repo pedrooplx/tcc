@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "d9ce1339-50a7-4614-bdd4-696b9df0f33a": {
+      "ProjectGuid": "d9ce1339-50a7-4614-bdd4-696b9df0f33a",
+      "DisplayName": "TCC.API",
+      "ColorIndex": 0
+    },
+    "791fda67-58ff-4d0d-92ca-c24bd1990386": {
+      "ProjectGuid": "791fda67-58ff-4d0d-92ca-c24bd1990386",
+      "DisplayName": "TCC.Infra",
+      "ColorIndex": 1
+    },
+    "1ccf1abc-c425-4b9b-897e-86ffedbdf849": {
+      "ProjectGuid": "1ccf1abc-c425-4b9b-897e-86ffedbdf849",
+      "DisplayName": "docker",
+      "ColorIndex": 2
+    },
+    "581f1726-411c-4eef-8cae-b7e50dfd4072": {
+      "ProjectGuid": "581f1726-411c-4eef-8cae-b7e50dfd4072",
+      "DisplayName": "TCC.Application",
+      "ColorIndex": 3
+    },
+    "84000af4-5a93-4f58-8965-71cab4a71d50": {
+      "ProjectGuid": "84000af4-5a93-4f58-8965-71cab4a71d50",
+      "DisplayName": "TCC.Domain",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}
