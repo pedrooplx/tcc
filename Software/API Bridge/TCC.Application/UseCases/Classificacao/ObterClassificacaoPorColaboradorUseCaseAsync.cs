@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
+using TCC.Domain.Enums;
 using TCC.Domain.Gateways;
+using TCC.Infra.Helpers.ExceptionsHelper;
 
 namespace TCC.Application.UseCases.Classificacao
 {
-    public class ObterClassificacaoPorColaboradorUseCaseAsync : IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesPorColaboradorResponse>
+    public class ObterClassificacaoPorColaboradorUseCaseAsync : IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesResponse>
     {
         private readonly IClassificacaoGateway _classificacaoGateway;
         private readonly IColaboradorGateway _colaboradorGateway;
@@ -22,7 +24,7 @@ namespace TCC.Application.UseCases.Classificacao
             _mapper = mapper;
         }
 
-        public async Task<ObterClassificacoesPorColaboradorResponse> ExecuteAsync(ObterClassificacoesPorColaboradorRequest request)
+        public async Task<ObterClassificacoesResponse> ExecuteAsync(ObterClassificacoesPorColaboradorRequest request)
         {
             var colaborador = await _colaboradorGateway.ObterColaboradorPorFuncional(request.FuncionalColaborador);
 
@@ -30,12 +32,13 @@ namespace TCC.Application.UseCases.Classificacao
             {
                 var classificacoes = await _classificacaoGateway.ObterClassificacoesPorColaboradorAsync(colaborador.Id);
 
-                var classificacoesMapeadas = _mapper.Map<ObterClassificacoesPorColaboradorResponse>(classificacoes);
+                var classificacoesMapeadas = _mapper.Map<ObterClassificacoesResponse>(classificacoes);
 
                 return classificacoesMapeadas;
             }
 
-            return null;
+            throw new AppException(ErrosEnum.COLABORADOR_NAO_CADASTRADO);
+
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TCC.Domain.Enums
 {
-    public enum Emocoes
+    public enum EmocoesEnum
     {
         [Description("Bravo(a)")]
         angry,

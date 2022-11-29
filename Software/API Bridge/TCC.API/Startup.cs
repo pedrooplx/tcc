@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TCC.API.Middlewares;
 using TCC.Infra.DataProviders;
 using TCC.Infra.Extensions;
 using TCC.Infra.IoC;
@@ -47,6 +48,8 @@ namespace TCC.API
             {
                 app.UseHsts();
             }
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             HealthCheckConfiguration.ConfigureHealthCheck(app);
             SwaggerConfiguration.ConfigureSwagger(app);

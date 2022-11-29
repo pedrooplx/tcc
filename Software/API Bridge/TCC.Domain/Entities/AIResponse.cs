@@ -7,11 +7,11 @@ namespace TCC.Domain.Entities
 {
     public class AIResponse
     {
-        public Emocoes Emotion { get; set; }
+        public EmocoesEnum Emotion { get; set; }
         public double EmotionProbability { get; set; }
 
         public AIResponse() { }
-        public AIResponse(Emocoes emotion, double emotionProbability)
+        public AIResponse(EmocoesEnum emotion, double emotionProbability)
         {
             Emotion = emotion;
             EmotionProbability = emotionProbability * 100;
@@ -19,7 +19,7 @@ namespace TCC.Domain.Entities
 
         public AIResponse(int emotion, double emotionProbability)
         {
-            Emotion = (Emocoes)emotion;
+            Emotion = (EmocoesEnum)emotion;
             EmotionProbability = emotionProbability * 100;
         }
     }

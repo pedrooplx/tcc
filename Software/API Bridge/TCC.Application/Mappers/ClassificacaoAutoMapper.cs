@@ -21,13 +21,13 @@ namespace TCC.Application.Mappers
                 .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Probabilidade))
                 .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Emocao));
 
-            CreateMap<IEnumerable<Classificacao>, ObterClassificacoesPorColaboradorResponse>()
+            CreateMap<IEnumerable<Classificacao>, ObterClassificacoesResponse>()
                 .ForMember(dest => dest.Classificacoes, source => source.MapFrom(source => source));
 
             CreateMap<AnaliseClassificacaoRequest, ObterClassificacaoResponse>();
 
             CreateMap<Tuple<string, double>, ObterClassificacaoResponse>()
-                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => EnumExtension.GetDescription((Emocoes)Enum.Parse(typeof(Emocoes), source.Item1))))
+                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => EnumExtension.GetDescription((EmocoesEnum)Enum.Parse(typeof(EmocoesEnum), source.Item1))))
                 .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Item2));
         }
     }

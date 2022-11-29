@@ -13,7 +13,7 @@ namespace TCC.Application.Models.Classificacao
         [Required]
         public string Imagem { get; set; }
         [JsonIgnore]
-        public Emocoes? Emocao { get; set; }
+        public EmocoesEnum? Emocao { get; set; }
         [JsonIgnore]
         public double? Probabilidade { get; set; }
         [JsonIgnore]

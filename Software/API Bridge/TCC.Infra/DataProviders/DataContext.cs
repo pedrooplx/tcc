@@ -23,7 +23,7 @@ namespace TCC.Infra.DataProviders
             modelBuilder
                 .Entity<Classificacao>()
                 .Property(d => d.Emocao)
-                .HasConversion(new EnumToStringConverter<Emocoes>());
+                .HasConversion(new EnumToStringConverter<EmocoesEnum>());
         }
 
         public override int SaveChanges()

@@ -7,6 +7,7 @@ using TCC.Application.UseCases.Abstract;
 using TCC.Domain.Enums;
 using TCC.Domain.Gateways;
 using TCC.Domain.Gateways.Services;
+using TCC.Infra.Helpers.ExceptionsHelper;
 
 namespace TCC.Application.UseCases.Classificacao
 {
@@ -43,7 +44,7 @@ namespace TCC.Application.UseCases.Classificacao
 
                     foreach (var recognitions in recognitionResult)
                     {
-                        request.Emocao = (Emocoes)Enum.Parse(typeof(Emocoes), recognitions.Item1);
+                        request.Emocao = (EmocoesEnum)Enum.Parse(typeof(EmocoesEnum), recognitions.Item1);
                         request.Probabilidade = recognitions.Item2;
                         request.ColaboradorId = colaborador.Id;
 
@@ -60,14 +61,14 @@ namespace TCC.Application.UseCases.Classificacao
                 {
                     await _classificacaoGateway.InsertAsync(new Domain.Entities.Classificacao() 
                     { 
-                        Emocao = Emocoes.undefined,
+                        Emocao = EmocoesEnum.undefined,
                         Probabilidade = 0,
                         ColaboradorId = colaborador.Id
                     });
                 }
             }
 
-            return null;
+            throw new AppException(ErrosEnum.COLABORADOR_NAO_CADASTRADO);
         }
     }
 }

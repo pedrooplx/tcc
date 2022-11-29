@@ -24,5 +24,12 @@ namespace TCC.Infra.DataProviders.Repositories
                .Where(c => c.ColaboradorId == idColaborador)
                .ToListAsync();
         }
+
+        public async Task<IEnumerable<Classificacao>> ObterClassificacoesPorOrganizacaoAsync(int cnpjOrganizacao)
+        {
+            return await _context.Classificacoes.AsNoTracking()
+               .Where(c => c.Colaborador.Organizacao.Cnpj == cnpjOrganizacao)
+               .ToListAsync();
+        }
     }
 }

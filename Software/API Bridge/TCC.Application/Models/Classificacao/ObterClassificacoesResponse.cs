@@ -2,7 +2,7 @@
 
 namespace TCC.Application.Models.Classificacao
 {
-    public class ObterClassificacoesPorColaboradorResponse
+    public class ObterClassificacoesResponse
     {
         public IEnumerable<ObterClassificacaoResponse> Classificacoes { get; set; }
     }
