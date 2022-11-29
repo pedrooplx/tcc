@@ -1036,20 +1036,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\allan\\.nuget\\packages\\": {}
+    "C:\\Users\\pedro\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ProxyIA\\IaEngine\\IaEngine.csproj",
+      "projectUniqueName": "C:\\Users\\pedro\\Documents\\GIT\\tcc\\Software\\API IA\\IaEngine\\IaEngine.csproj",
       "projectName": "IaEngine",
-      "projectPath": "E:\\ProxyIA\\IaEngine\\IaEngine.csproj",
-      "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
-      "outputPath": "E:\\ProxyIA\\IaEngine\\obj\\",
+      "projectPath": "C:\\Users\\pedro\\Documents\\GIT\\tcc\\Software\\API IA\\IaEngine\\IaEngine.csproj",
+      "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pedro\\Documents\\GIT\\tcc\\Software\\API IA\\IaEngine\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

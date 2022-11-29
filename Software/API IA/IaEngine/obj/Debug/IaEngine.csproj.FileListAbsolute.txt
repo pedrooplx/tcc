@@ -12,3 +12,17 @@ E:\ProxyIA\IaEngine\obj\Debug\IaEngine.csproj.CoreCompileInputs.cache
 E:\ProxyIA\IaEngine\obj\Debug\IaEngine.csproj.CopyComplete
 E:\ProxyIA\IaEngine\obj\Debug\IaEngine.dll
 E:\ProxyIA\IaEngine\obj\Debug\IaEngine.pdb
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\models\haarcascade_frontalface_default.xml
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\models\model.h5
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\models\model.json
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\IaEngine.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\IaEngine.pdb
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\Emgu.CV.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\Keras.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\Numpy.Bare.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\bin\Debug\Python.Runtime.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\obj\Debug\IaEngine.csproj.AssemblyReference.cache
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\obj\Debug\IaEngine.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\obj\Debug\IaEngine.csproj.CopyComplete
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\obj\Debug\IaEngine.dll
+C:\Users\pedro\Documents\GIT\tcc\Software\API IA\IaEngine\obj\Debug\IaEngine.pdb
