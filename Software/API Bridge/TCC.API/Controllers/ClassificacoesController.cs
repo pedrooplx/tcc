@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace TCC.API.Controllers
         }
 
         [HttpGet("colaborador/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ObterClassificacaoPorColaborador([Required][FromRoute] int id)
         {
             var request = new ObterClassificacoesPorColaboradorRequest(id);
@@ -37,7 +40,22 @@ namespace TCC.API.Controllers
             return new RestResult<ObterClassificacoesPorColaboradorResponse>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
         }
 
+        [HttpGet("organizacao/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> ObterClassificacaoPorOrgaizacao([Required][FromRoute] int id)
+        {
+            var request = new ObterClassificacoesPorColaboradorRequest(id);
+
+            var classificacoes = await _obterClassificacaoPorColaboradorUseCaseAsync.ExecuteAsync(request);
+
+            return new RestResult<ObterClassificacoesPorColaboradorResponse>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
+        }
+
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> InserirClassificacao([Required][FromBody] InserirClassificacaoRequest request)
         {
             var classificacoes = await _inserirClassificacaoUseCaseAsync.ExecuteAsync(request);

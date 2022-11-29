@@ -1,0 +1,14 @@
+E:\ProxyIA\IaEngine\bin\Debug\models\haarcascade_frontalface_default.xml
+E:\ProxyIA\IaEngine\bin\Debug\models\model.h5
+E:\ProxyIA\IaEngine\bin\Debug\models\model.json
+E:\ProxyIA\IaEngine\bin\Debug\IaEngine.dll
+E:\ProxyIA\IaEngine\bin\Debug\IaEngine.pdb
+E:\ProxyIA\IaEngine\bin\Debug\Emgu.CV.dll
+E:\ProxyIA\IaEngine\bin\Debug\Keras.dll
+E:\ProxyIA\IaEngine\bin\Debug\Numpy.Bare.dll
+E:\ProxyIA\IaEngine\bin\Debug\Python.Runtime.dll
+E:\ProxyIA\IaEngine\obj\Debug\IaEngine.csproj.AssemblyReference.cache
+E:\ProxyIA\IaEngine\obj\Debug\IaEngine.csproj.CoreCompileInputs.cache
+E:\ProxyIA\IaEngine\obj\Debug\IaEngine.csproj.CopyComplete
+E:\ProxyIA\IaEngine\obj\Debug\IaEngine.dll
+E:\ProxyIA\IaEngine\obj\Debug\IaEngine.pdb

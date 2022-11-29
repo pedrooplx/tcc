@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\ProxyIA\\IaEngine\\IaEngine.csproj": {}
+  },
+  "projects": {
+    "E:\\ProxyIA\\IaEngine\\IaEngine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ProxyIA\\IaEngine\\IaEngine.csproj",
+        "projectName": "IaEngine",
+        "projectPath": "E:\\ProxyIA\\IaEngine\\IaEngine.csproj",
+        "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
+        "outputPath": "E:\\ProxyIA\\IaEngine\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Emgu.CV.runtime.windows": {
+              "target": "Package",
+              "version": "[4.6.0.5131, )"
+            },
+            "Keras.NET": {
+              "target": "Package",
+              "version": "[3.8.5, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
