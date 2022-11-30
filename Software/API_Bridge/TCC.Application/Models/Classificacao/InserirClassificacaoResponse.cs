@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace TCC.Application.Models.Classificacao
 {
-    public class ObterClassificacaoResponse
+    public class InserirClassificacaoResponse
     {
         public double Probabilidade { get; set; }
         public string Emocao { get; set; }
-        public int FuncionalColaborador { get; set; }
-        public DateTime HorarioCadastro { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace TCC.API.Controllers
     [Route("analise-expressoes/classificacoes")]
     public class ClassificacoesController : Controller
     {
-        private readonly IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>> _inserirClassificacaoUseCaseAsync;
+        private readonly IUseCaseAsync<InserirClassificacaoRequest, List<InserirClassificacaoResponse>> _inserirClassificacaoUseCaseAsync;
         private readonly IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesResponse> _obterClassificacaoPorColaboradorUseCaseAsync;
         private readonly IUseCaseAsync<ObterClassificacoesPorOrganizacaoRequest, ObterClassificacoesResponse> _obterClassificacaoPorOrganizacaoUseCaseAsync;
         private readonly IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>> _analiseClassificacaoUseCaseAsync;
         
         public ClassificacoesController(
-            IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>> inserirClassificacaoUseCaseAsync,
+            IUseCaseAsync<InserirClassificacaoRequest, List<InserirClassificacaoResponse>> inserirClassificacaoUseCaseAsync,
             IUseCaseAsync<ObterClassificacoesPorColaboradorRequest, ObterClassificacoesResponse> obterClassificacaoPorColaboradorUseCaseAsync,
             IUseCaseAsync<ObterClassificacoesPorOrganizacaoRequest, ObterClassificacoesResponse> obterClassificacaoPorOrganizacaoUseCaseAsync,
             IUseCaseAsync<AnaliseClassificacaoRequest, List<ObterClassificacaoResponse>> analiseClassificacaoUseCaseAsync)
@@ -63,7 +63,7 @@ namespace TCC.API.Controllers
         {
             var classificacoes = await _inserirClassificacaoUseCaseAsync.ExecuteAsync(request);
 
-            return new RestResult<List<ObterClassificacaoResponse>>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
+            return new RestResult<List<InserirClassificacaoResponse>>(classificacoes, StatusCodeExtensions.Extrair(classificacoes));
         }
 
         [HttpPost("analise")]

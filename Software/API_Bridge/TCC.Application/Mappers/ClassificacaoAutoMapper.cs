@@ -16,15 +16,25 @@ namespace TCC.Application.Mappers
                 .ForMember(dest => dest.ColaboradorId, source => source.MapFrom(source => source.ColaboradorId))
                 .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Probabilidade))
                 .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Emocao));
-            
-            CreateMap<Classificacao, ObterClassificacaoResponse>()
+
+            CreateMap<Classificacao, InserirClassificacaoResponse>()
                 .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Probabilidade))
                 .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Emocao));
+
+            CreateMap<Classificacao, ObterClassificacaoResponse>()
+                .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Probabilidade))
+                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => source.Emocao))
+                .ForMember(dest => dest.HorarioCadastro, source => source.MapFrom(source => source.CriandoEm))
+                .ForMember(dest => dest.FuncionalColaborador, source => source.MapFrom(source => source.Colaborador.Funcional));
 
             CreateMap<IEnumerable<Classificacao>, ObterClassificacoesResponse>()
                 .ForMember(dest => dest.Classificacoes, source => source.MapFrom(source => source));
 
             CreateMap<AnaliseClassificacaoRequest, ObterClassificacaoResponse>();
+
+            CreateMap<Tuple<string, double>, InserirClassificacaoResponse>()
+                .ForMember(dest => dest.Emocao, source => source.MapFrom(source => EnumExtension.GetDescription((EmocoesEnum)Enum.Parse(typeof(EmocoesEnum), source.Item1))))
+                .ForMember(dest => dest.Probabilidade, source => source.MapFrom(source => source.Item2));
 
             CreateMap<Tuple<string, double>, ObterClassificacaoResponse>()
                 .ForMember(dest => dest.Emocao, source => source.MapFrom(source => EnumExtension.GetDescription((EmocoesEnum)Enum.Parse(typeof(EmocoesEnum), source.Item1))))

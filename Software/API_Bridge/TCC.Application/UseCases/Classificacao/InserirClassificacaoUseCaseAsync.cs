@@ -10,7 +10,7 @@ using TCC.Domain.Gateways.Services;
 
 namespace TCC.Application.UseCases.Classificacao
 {
-    public class InserirClassificacaoUseCaseAsync : IUseCaseAsync<InserirClassificacaoRequest, List<ObterClassificacaoResponse>>
+    public class InserirClassificacaoUseCaseAsync : IUseCaseAsync<InserirClassificacaoRequest, List<InserirClassificacaoResponse>>
     {
         private readonly IMapper _mapper;
         private readonly IClassificacaoGateway _classificacaoGateway;
@@ -29,7 +29,7 @@ namespace TCC.Application.UseCases.Classificacao
             _consultarIAGateway = consultarIAGateway;
         }
 
-        public async Task<List<ObterClassificacaoResponse>> ExecuteAsync(InserirClassificacaoRequest request)
+        public async Task<List<InserirClassificacaoResponse>> ExecuteAsync(InserirClassificacaoRequest request)
         {
             var colaborador = await _colaboradorGateway.ObterColaboradorPorFuncional(request.FuncionalColaborador);
 
@@ -39,7 +39,7 @@ namespace TCC.Application.UseCases.Classificacao
 
                 if (recognitionResult != null)
                 {
-                    List<ObterClassificacaoResponse> retorno = new List<ObterClassificacaoResponse>();
+                    List<InserirClassificacaoResponse> retorno = new List<InserirClassificacaoResponse>();
 
                     foreach (var recognitions in recognitionResult)
                     {
@@ -51,7 +51,7 @@ namespace TCC.Application.UseCases.Classificacao
 
                         await _classificacaoGateway.InsertAsync(classificacao);
 
-                        retorno.Add(_mapper.Map<ObterClassificacaoResponse>(recognitions));
+                        retorno.Add(_mapper.Map<InserirClassificacaoResponse>(recognitions));
                     }
 
                     return retorno;
