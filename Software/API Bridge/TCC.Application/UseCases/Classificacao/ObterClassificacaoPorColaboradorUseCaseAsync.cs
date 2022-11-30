@@ -2,9 +2,7 @@
 using System.Threading.Tasks;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
-using TCC.Domain.Enums;
 using TCC.Domain.Gateways;
-using TCC.Infra.Helpers.ExceptionsHelper;
 
 namespace TCC.Application.UseCases.Classificacao
 {
@@ -37,7 +35,7 @@ namespace TCC.Application.UseCases.Classificacao
                 return classificacoesMapeadas;
             }
 
-            throw new AppException(ErrosEnum.COLABORADOR_NAO_CADASTRADO);
+            return null;
 
         }
     }

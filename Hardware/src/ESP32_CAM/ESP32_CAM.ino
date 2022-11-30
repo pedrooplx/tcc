@@ -76,11 +76,18 @@ void setup() {
   WiFiMulti.addAP(ssid, password);
 
   // wait for WiFi connection
-  Serial.print("Waiting for WiFi to connect...");
+  Serial.print("Iniciando conexão WiFi...");
+  int tentativas = 0;
   while ((WiFiMulti.run() != WL_CONNECTED)) {
-    Serial.print(".");
+    delay(2000);
+    Serial.print("...");
+    tentativas++;
+
+    if(tentativas > 3){
+      ESP.restart();
+    }
   }
-  Serial.println("connected");
+  Serial.println("Wifi conectado");
   
   Serial.println();
   Serial.print("ESP32-CAM IP Address: ");
@@ -117,17 +124,20 @@ void setup() {
   if(psramFound()){
     Serial.println("Parametros encontrados");
     config.frame_size = FRAMESIZE_CIF;
-    config.jpeg_quality = 12;  //0-63 lower number means higher quality
-    config.fb_count = 5;
+    config.jpeg_quality = 10;  //0-63 lower number means higher quality
+    config.fb_count = 1;
   } else {
-    Serial.println("Parametros não encontrados... Reiniciando sistema...");
-    ESP.restart();
+    Serial.println("Parametros não encontrados");
+    config.frame_size = FRAMESIZE_CIF;
+    config.jpeg_quality = 24;  //0-63 lower number means higher quality
+    config.fb_count = 1;
   }
   
   // camera init
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
     Serial.printf("Falha ao iniciar camera... Erro 0x%x", err);
+    ESP.restart();
   } else {
      Serial.println("Camera iniciada com sucesso");
   }
@@ -147,6 +157,10 @@ void sendPhoto() {
 
   camera_fb_t * fb = NULL;
   fb = esp_camera_fb_get(); //Método que tira a foto
+  esp_camera_fb_return(fb); // dispose the buffered image
+  fb = NULL; // reset to capture errors
+  fb = esp_camera_fb_get(); // get fresh image
+  
   if(!fb) {
     Serial.println("Falha ao capturar imagem");
     ESP.restart();
@@ -158,7 +172,9 @@ void sendPhoto() {
     String encodedImg = base64::encode(fbBuf, fb->len);
     const char* convertedImage = encodedImg.c_str();
 
-    String json = "{\"funcional\":987335338,\"imagem\":\"" + (String)convertedImage +"\"}";   
+    String json = "{\"funcional_colaborador\":436,\"imagem\":\"" + (String)convertedImage +"\"}";   
+
+    Serial.println(json);
     
     if(client) {
       HTTPClient https;

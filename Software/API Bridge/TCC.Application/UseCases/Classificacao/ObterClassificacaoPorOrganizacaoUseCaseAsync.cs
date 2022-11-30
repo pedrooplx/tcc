@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TCC.Application.Models.Classificacao;
 using TCC.Application.UseCases.Abstract;
-using TCC.Domain.Enums;
 using TCC.Domain.Gateways;
-using TCC.Infra.Helpers.ExceptionsHelper;
 
 namespace TCC.Application.UseCases.Classificacao
 {
@@ -40,7 +35,7 @@ namespace TCC.Application.UseCases.Classificacao
                 return classificacoesMapeadas;
             }
 
-            throw new AppException(ErrosEnum.ORGANIZACAO_NAO_CADASTRADA);
+            return null;
         }
     }
 }
