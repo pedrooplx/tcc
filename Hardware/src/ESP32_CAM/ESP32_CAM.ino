@@ -124,7 +124,7 @@ void setup() {
   if(psramFound()){
     Serial.println("Parametros encontrados");
     config.frame_size = FRAMESIZE_CIF;
-    config.jpeg_quality = 10;  //0-63 lower number means higher quality
+    config.jpeg_quality = 8;  //0-63 lower number means higher quality
     config.fb_count = 1;
   } else {
     Serial.println("Parametros não encontrados");
