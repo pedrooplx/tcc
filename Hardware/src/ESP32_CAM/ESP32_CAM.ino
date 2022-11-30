@@ -35,10 +35,11 @@ const char* rootCACertificate = \
 "-----END CERTIFICATE-----\n";
 
 
-const char* ssid = "PEDRO DIA 2G";
-const char* password = "pedro123";
+const char* ssid = "mobile_net";
+const char* password = "mobile_nets8";
 const String serverPath = "https://api-analise-expressao.herokuapp.com/analise-expressoes/classificacoes";
-const int funcional = 987335338;
+const int timerInterval = 10000;    // time between each HTTP POST image
+unsigned long previousMillis = 0;   // last time image was sent
 
 WiFiClientSecure *client = new WiFiClientSecure;
 HTTPClient https;
@@ -50,7 +51,6 @@ WiFiMulti WiFiMulti;
 #define XCLK_GPIO_NUM      0
 #define SIOD_GPIO_NUM     26
 #define SIOC_GPIO_NUM     27
-
 #define Y9_GPIO_NUM       35
 #define Y8_GPIO_NUM       34
 #define Y7_GPIO_NUM       39
@@ -63,19 +63,28 @@ WiFiMulti WiFiMulti;
 #define HREF_GPIO_NUM     23
 #define PCLK_GPIO_NUM     22
 
-const int timerInterval = 10000;    // time between each HTTP POST image
-unsigned long previousMillis = 0;   // last time image was sent
-
 void setup() {
-  //Configuração WIFI
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); 
-  //Serial.begin(115200);
   Serial.begin(9600);
+
+  configureWifi();
+  configureCam();
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= timerInterval) {
+    sendPhoto();
+    previousMillis = currentMillis;
+  }
+}
+
+void configureWifi(){
 
   WiFi.mode(WIFI_STA);
   WiFiMulti.addAP(ssid, password);
 
-  // wait for WiFi connection
+  //estabelecendo conexão wifi
   Serial.print("Iniciando conexão WiFi...");
   int tentativas = 0;
   while ((WiFiMulti.run() != WL_CONNECTED)) {
@@ -93,11 +102,12 @@ void setup() {
   Serial.print("ESP32-CAM IP Address: ");
   Serial.println(WiFi.localIP());
 
-  //Configuração de Client WIFI
+  //Configuração de wifi Seguro
   WiFiClientSecure *client = new WiFiClientSecure;
   client -> setCACert(rootCACertificate);
-  
-  //Configuração de Camera 
+}
+
+void configureCam(){
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
@@ -133,21 +143,13 @@ void setup() {
     config.fb_count = 1;
   }
   
-  // camera init
+  //inicializar camera
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
     Serial.printf("Falha ao iniciar camera... Erro 0x%x", err);
     ESP.restart();
   } else {
      Serial.println("Camera iniciada com sucesso");
-  }
-}
-
-void loop() {
-  unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= timerInterval) {
-    sendPhoto();
-    previousMillis = currentMillis;
   }
 }
 
@@ -173,12 +175,8 @@ void sendPhoto() {
     const char* convertedImage = encodedImg.c_str();
 
     String json = "{\"funcional_colaborador\":436,\"imagem\":\"" + (String)convertedImage +"\"}";   
-
-    Serial.println(json);
     
-    if(client) {
-      HTTPClient https;
-      
+    if(client) {      
       Serial.print("[HTTPS] begin...\n");
         if (https.begin(serverPath, rootCACertificate)) {  // HTTPS
           https.addHeader("Content-Type", "application/json");
