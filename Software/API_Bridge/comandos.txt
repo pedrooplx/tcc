@@ -6,3 +6,4 @@ heroku container:push web -a api-analise-expressao
 heroku container:release web -a api-analise-expressao
 heroku run bash -a api-analise-expressao
 heroku logs --tail
+heroku ps:scale web=1

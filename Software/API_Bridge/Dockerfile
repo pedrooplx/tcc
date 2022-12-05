@@ -1,6 +1,13 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
+
+#TIMEZONE START
+RUN echo "America/Sao_Paulo" > /etc/timezone
+RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+#TIMEZONE END
+
 WORKDIR /app
 EXPOSE 5000
 ENV ASPNETCORE_ENVIRONMENT="Staging"
