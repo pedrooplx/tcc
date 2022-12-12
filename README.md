@@ -1,4 +1,4 @@
-# A MELHORIA DE ATENDIMENTO COM BASE NA DETECCAO DE EMOCOES VIA RECONHECIMENTO FACIAL PARA A EVOLUCAO DAS EMPRESAS
+# A MELHORIA DE ATENDIMENTO COM BASE NA DETECÇÃO DE EMOÇÕES VIA RECONHECIMENTO FACIAL PARA A EVOLUÇÃO DAS EMPRESAS
 
 Este repositório contém todos os arquivos utilizados na produção do documento oficial do TCC para o curso de Ciência da Computação - Universidade Paulista.
 
